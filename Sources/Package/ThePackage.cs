@@ -33,7 +33,7 @@ namespace Watch3D.Package
             MenuCommands.RegisterCommand(CommandSet, ShowToolWindowCommandId, ShowToolWindow);
             var dte = this.GetService<DTE2, DTE>();
             var debugger = (Debugger5) dte.Debugger;
-            ExpressionReader = new ExpressionReader(debugger);
+            ExpressionReader = new ExpressionReaderPrebuiltStrings(debugger);
             DebuggerState = new DebuggerState(debugger);
         }
 

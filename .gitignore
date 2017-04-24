@@ -5,3 +5,4 @@ Sources/Package/obj/*
 Test/Debuggee/.vs/*
 Test/Debuggee/bin/*
 Test/Debuggee/obj/*
+Test/Debuggee/packages/*

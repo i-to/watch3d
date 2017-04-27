@@ -1,17 +1,16 @@
 using System;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
-using EnvDTE100;
 
-namespace Watch3D.Package
+namespace Watch3D.Core
 {
-    public class ExpressionReaderDirect : ExpressionReader
+    public class ExpressionReaderGranular : ExpressionReader
     {
-        readonly Debugger5 Debugger;
+        readonly DebugContext DebugContext;
 
-        public ExpressionReaderDirect(Debugger5 debugger)
+        public ExpressionReaderGranular(DebugContext debugContext)
         {
-            Debugger = debugger;
+            DebugContext = debugContext;
         }
 
         public MeshGeometry3D TryReadMesh(string meshSymbol)
@@ -35,7 +34,7 @@ namespace Watch3D.Package
 
         Int32Collection ReadTriangleIndices(string trianglesSymbol)
         {
-            var triangleCount = Debugger.GetExpression(trianglesSymbol + ".Count").Value.ParseInt32();
+            var triangleCount = DebugContext.EvaluateExpression(trianglesSymbol + ".Count").ParseInt32();
             var indices = new Int32Collection(triangleCount * 3);
             for (int i = 0; i != triangleCount; ++i)
                 AddTriangle(indices, $"{trianglesSymbol}[{i}]");
@@ -44,14 +43,14 @@ namespace Watch3D.Package
 
         void AddTriangle(Int32Collection indices, string triangleSymbol)
         {
-            indices.Add(Debugger.GetExpression(triangleSymbol + ".A").Value.ParseInt32());
-            indices.Add(Debugger.GetExpression(triangleSymbol + ".B").Value.ParseInt32());
-            indices.Add(Debugger.GetExpression(triangleSymbol + ".C").Value.ParseInt32());
+            indices.Add(DebugContext.EvaluateExpression(triangleSymbol + ".A").ParseInt32());
+            indices.Add(DebugContext.EvaluateExpression(triangleSymbol + ".B").ParseInt32());
+            indices.Add(DebugContext.EvaluateExpression(triangleSymbol + ".C").ParseInt32());
         }
 
         Point3DCollection ReadPoints(string verticesSymbol)
         {
-            var vertexCount = Debugger.GetExpression(verticesSymbol + ".Count").Value.ParseInt32();
+            var vertexCount = DebugContext.EvaluateExpression(verticesSymbol + ".Count").ParseInt32();
             var points = new Point3DCollection(vertexCount);
             for (int i = 0; i != vertexCount; ++i)
                 points.Add(ReadPoint($"{verticesSymbol}[{i}]"));
@@ -61,9 +60,9 @@ namespace Watch3D.Package
         Point3D ReadPoint(string vertexSymbol) =>
             new Point3D
             {
-                X = Debugger.GetExpression(vertexSymbol + ".X").Value.ParseDouble(),
-                Y = Debugger.GetExpression(vertexSymbol + ".Y").Value.ParseDouble(),
-                Z = Debugger.GetExpression(vertexSymbol + ".Z").Value.ParseDouble()
+                X = DebugContext.EvaluateExpression(vertexSymbol + ".X").ParseDouble(),
+                Y = DebugContext.EvaluateExpression(vertexSymbol + ".Y").ParseDouble(),
+                Z = DebugContext.EvaluateExpression(vertexSymbol + ".Z").ParseDouble()
             };
     }
 }

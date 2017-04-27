@@ -1,13 +1,14 @@
 ﻿using EnvDTE;
 using EnvDTE100;
+using Watch3D.Core;
 
 namespace Watch3D.Package
 {
-    public class DebuggerState
+    public class DteDebuggerState : DebuggerState
     {
         readonly Debugger5 Debugger;
 
-        public DebuggerState(Debugger5 debugger)
+        public DteDebuggerState(Debugger5 debugger)
         {
             Debugger = debugger;
         }

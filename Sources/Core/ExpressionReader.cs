@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media.Media3D;
 
-namespace Watch3D.Package
+namespace Watch3D.Core
 {
     public interface ExpressionReader
     {

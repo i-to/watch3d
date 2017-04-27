@@ -6,6 +6,7 @@ using EnvDTE100;
 using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
+using Watch3D.Core;
 
 namespace Watch3D.Package
 {
@@ -24,6 +25,7 @@ namespace Watch3D.Package
         MenuCommands MenuCommands;
         ExpressionReader ExpressionReader;
         DebuggerState DebuggerState;
+        Scene Scene;
 
         protected override void Initialize()
         {
@@ -33,15 +35,18 @@ namespace Watch3D.Package
             MenuCommands.RegisterCommand(CommandSet, ShowToolWindowCommandId, ShowToolWindow);
             var dte = this.GetService<DTE2, DTE>();
             var debugger = (Debugger5) dte.Debugger;
-            ExpressionReader = new ExpressionReaderPrebuiltStrings(debugger);
-            DebuggerState = new DebuggerState(debugger);
+            var debugContext = new DteDebugContext(debugger);
+            var expressionFactory = new TestDebuggeeExpressionFactory();
+            ExpressionReader = new ExpressionReaderBulk(expressionFactory, debugContext);
+            DebuggerState = new DteDebuggerState(debugger);
+            Scene = new Scene(ExpressionReader, DebuggerState);
         }
 
         TheToolWindowPane CreateToolWindow()
         {
             var pane = new TheToolWindowPane {Caption = "Watch 3D"};
             var dte = this.GetService<DTE2, DTE>();
-            pane.Content = new TheToolWindowControl(ExpressionReader, DebuggerState);
+            pane.Content = new TheToolWindowControl(Scene);
             return pane;
         }
 

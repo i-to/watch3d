@@ -1,9 +1,6 @@
 Binaries/*
-Sources/.vs/*
-Sources/packages/*
-Sources/Package/obj/*
-Test/Debuggee/.vs/*
-Test/Debuggee/bin/*
+.vs/*
+packages/*
+Package/obj/*
+Core/obj/*
 Test/Debuggee/obj/*
-Test/Debuggee/packages/*
-Sources/Core/obj/*

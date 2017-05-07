@@ -37,7 +37,7 @@ namespace Watch3D.Package
             var debugger = (Debugger5) dte.Debugger;
             var debugContext = new DteDebugContext(debugger);
             var expressionFactory = new TestDebuggeeExpressionFactory();
-            ExpressionReader = new ExpressionReaderBulk(expressionFactory, debugContext);
+            ExpressionReader = new ExpressionReader(expressionFactory, debugContext);
             DebuggerState = new DteDebuggerState(debugger);
             Scene = new Scene(ExpressionReader, DebuggerState);
         }

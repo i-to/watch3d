@@ -4,12 +4,12 @@ using System.Windows.Media.Media3D;
 
 namespace Watch3D.Core
 {
-    public class ExpressionReaderBulk : ExpressionReader
+    public class ExpressionReader
     {
         readonly ExpressionFactory ExpressionFactory;
         readonly DebugContext DebugContext;
 
-        public ExpressionReaderBulk(
+        public ExpressionReader(
             ExpressionFactory expressionFactory,
             DebugContext debugContext)
         {

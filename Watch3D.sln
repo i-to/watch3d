@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Package", "Package\Package.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{30E583E0-47AD-4F24-91B1-DE67D1588B6F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{890BA7C3-44C0-4A1B-9549-C7C62F2FDA93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Debuggee", "Test\Debuggee\Debuggee.csproj", "{B11F6CF3-0B7E-492D-B8B9-A45EE441417A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +25,15 @@ Global
 		{30E583E0-47AD-4F24-91B1-DE67D1588B6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30E583E0-47AD-4F24-91B1-DE67D1588B6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30E583E0-47AD-4F24-91B1-DE67D1588B6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B11F6CF3-0B7E-492D-B8B9-A45EE441417A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B11F6CF3-0B7E-492D-B8B9-A45EE441417A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B11F6CF3-0B7E-492D-B8B9-A45EE441417A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B11F6CF3-0B7E-492D-B8B9-A45EE441417A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B11F6CF3-0B7E-492D-B8B9-A45EE441417A} = {890BA7C3-44C0-4A1B-9549-C7C62F2FDA93}
 	EndGlobalSection
 EndGlobal

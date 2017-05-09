@@ -1,6 +1,6 @@
 ﻿namespace Debuggee
 {
-    class Point
+    public class Point
     {
         public double X, Y, Z;
 

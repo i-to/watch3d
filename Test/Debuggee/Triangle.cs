@@ -1,6 +1,6 @@
 ﻿namespace Debuggee
 {
-    class Triangle
+    public class Triangle
     {
         public int A, B, C;
 

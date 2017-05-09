@@ -5,6 +5,7 @@ namespace Watch3D.Core
 {
     public static class StringExtensions
     {
+        public static bool IsEmpty(this string str) => str == string.Empty;
         public static int ParseInt32(this string str) => int.Parse(str);
         public static double ParseDouble(this string str) => double.Parse(str);
         public static Point3DCollection ParsePoint3DCollection(this string str) => Point3DCollection.Parse(str);

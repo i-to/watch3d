@@ -25,6 +25,8 @@ namespace Watch3D.Core
 
         public void Update(string meshSymbol)
         {
+            if (meshSymbol.IsEmpty())
+                return;
             if (!DebuggerState.IsBreakMode)
             {
                 SetStatus("ERROR:", "Cannot read mesh symbol while not in break mode");
@@ -37,6 +39,12 @@ namespace Watch3D.Core
                 return;
             }
             SetStatus("Mesh object:", meshSymbol);
+        }
+
+        public void UpdateByVisualizer(MeshGeometry3D mesh)
+        {
+            Mesh = mesh;
+            SetStatus("Mesh", "Set by visualizer service");
         }
     }
 }

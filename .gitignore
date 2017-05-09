@@ -3,4 +3,7 @@ Binaries/*
 packages/*
 Package/obj/*
 Core/obj/*
+Visualizer/obj/*
 Test/Debuggee/obj/*
+Test/DebuggeeVisualizer/obj/*
+Test/Debuggee/.vs/*

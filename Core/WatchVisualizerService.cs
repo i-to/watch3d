@@ -14,7 +14,7 @@ namespace Watch3D.Core
         public void ShowMesh(InteropMesh interopMesh)
         {
             var mesh = InteropConverter.Convert(interopMesh);
-            Scene.UpdateByVisualizer(mesh);
+            Scene.Mesh = mesh;
         }
     }
 }

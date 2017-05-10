@@ -7,7 +7,8 @@
              Background="{DynamicResource VsBrush.Window}"
              Foreground="{DynamicResource VsBrush.WindowText}"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300"
+             Name="This">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -17,14 +18,14 @@
             x:Name="Viewport"
             Grid.Row="0"
             ZoomExtentsWhenLoaded="True"
-            ShowViewCube="False"
+            ShowViewCube="True"
             ShowCoordinateSystem="True"
             Title="Empty"
             >
             <HelixToolkit:DirectionalHeadLight/>
             <ModelVisual3D>
                 <ModelVisual3D.Content>
-                    <GeometryModel3D x:Name="Model">
+                    <GeometryModel3D x:Name="Model" Geometry="{Binding ElementName=This, Path=Scene.Mesh, Mode=OneWay}">
                         <GeometryModel3D.Material>
                             <DiffuseMaterial x:Name="DiffuseMaterialFront">
                                 <DiffuseMaterial.Brush>
@@ -46,7 +47,7 @@
         </HelixToolkit:HelixViewport3D>
         <DockPanel Grid.Row="1" LastChildFill="True">
             <Label DockPanel.Dock="Left" Content="Mesh symbol name"></Label>
-            <Button x:Name="AddButton" DockPanel.Dock="Right" Content="Add" Click="EvaluateButton_OnClick"/>
+            <Button x:Name="AddButton" DockPanel.Dock="Right" Content="Add" Click="Add"/>
             <TextBox x:Name="MeshSymbol" Text="" MinWidth="100"/>
         </DockPanel>
     </Grid>

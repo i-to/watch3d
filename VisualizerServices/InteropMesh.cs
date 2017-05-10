@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Watch3D.Visualizer
+namespace Watch3D.VisualizerServices
 {
     [Serializable]
     public struct InteropMesh

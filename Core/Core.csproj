@@ -53,9 +53,9 @@
     <Compile Include="WatchVisualizerService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Visualizer\Visualizer.csproj">
+    <ProjectReference Include="..\VisualizerServices\VisualizerServices.csproj">
       <Project>{27f90313-fdcf-4571-bab4-050ae0fc07b7}</Project>
-      <Name>Visualizer</Name>
+      <Name>VisualizerServices</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

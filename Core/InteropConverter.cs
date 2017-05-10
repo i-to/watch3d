@@ -1,6 +1,6 @@
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
-using Watch3D.Visualizer;
+using Watch3D.VisualizerServices;
 
 namespace Watch3D.Core
 {

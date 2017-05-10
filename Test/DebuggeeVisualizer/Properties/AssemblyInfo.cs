@@ -1,17 +1,16 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [assembly: System.Diagnostics.DebuggerVisualizer(
-    typeof(DebuggeeVisualizer.EntryPoint),
-    typeof(DebuggeeVisualizer.MeshObjectSource),
-    Target = typeof(Debuggee.Mesh),
+    typeof(Watch3D.Test.DebuggeeVisualizer.EntryPoint),
+    typeof(Watch3D.Test.DebuggeeVisualizer.MeshObjectSource),
+    Target = typeof(Watch3D.Test.Debuggee.Mesh),
     Description = "Send to Watch3D window")]
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DebuggeeVisualizer")]
+[assembly: AssemblyTitle("Watch3D.Test.DebuggeeVisualizer")]
 [assembly: AssemblyDescription("Sample VS visualizer for Debuggee test project")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]

@@ -7,8 +7,8 @@
     <ProjectGuid>{69D9638A-F8D0-4835-B4BF-0BE42597C0F6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DebuggeeVisualizer</RootNamespace>
-    <AssemblyName>DebuggeeVisualizer</AssemblyName>
+    <RootNamespace>Watch3D.Test.DebuggeeVisualizer</RootNamespace>
+    <AssemblyName>Watch3D.Test.DebuggeeVisualizer</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\Binaries\Test\DebuggeeVisualizer\Debug\</OutputPath>
+    <OutputPath>..\..\Binaries\Test\Watch3D.Test.DebuggeeVisualizer\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -24,7 +24,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\Binaries\Test\DebuggeeVisualizer\Release\</OutputPath>
+    <OutputPath>..\..\Binaries\Test\Watch3D.Test.DebuggeeVisualizer\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -56,9 +56,9 @@
     <Compile Include="InteropConverter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Visualizer\Visualizer.csproj">
+    <ProjectReference Include="..\..\VisualizerServices\VisualizerServices.csproj">
       <Project>{27f90313-fdcf-4571-bab4-050ae0fc07b7}</Project>
-      <Name>Visualizer</Name>
+      <Name>VisualizerServices</Name>
     </ProjectReference>
     <ProjectReference Include="..\Debuggee\Debuggee.csproj">
       <Project>{b11f6cf3-0b7e-492d-b8b9-a45ee441417a}</Project>
@@ -68,7 +68,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy /Y "$(TargetPath)" "%25USERPROFILE%25\Documents\Visual Studio 2015\Visualizers\"
-copy /Y "$(TargetDir)..\..\..\Watch3D\$(ConfigurationName)\Watch3D.Visualizer.dll" "%25USERPROFILE%25\Documents\Visual Studio 2015\Visualizers\"</PostBuildEvent>
+copy /Y "$(TargetDir)..\..\..\Watch3D\$(ConfigurationName)\Watch3D.VisualizerServices.dll" "%25USERPROFILE%25\Documents\Visual Studio 2015\Visualizers\"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

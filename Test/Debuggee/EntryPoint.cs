@@ -2,7 +2,7 @@
 using System.Linq;
 using HelixToolkit.Wpf;
 
-namespace Debuggee
+namespace Watch3D.Test.Debuggee
 {
     class EntryPoint
     {

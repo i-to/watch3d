@@ -7,7 +7,7 @@ using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Watch3D.Core;
-using Watch3D.Visualizer;
+using Watch3D.VisualizerServices;
 
 namespace Watch3D.Package
 {

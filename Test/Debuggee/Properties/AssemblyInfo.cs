@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Debuggee")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Watch3D.Test.Debuggee")]
+[assembly: AssemblyDescription("Sample debuggee project for testing Watch 3D debugging capabilities.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Debuggee")]
+[assembly: AssemblyProduct("Watch3D")]
 [assembly: AssemblyCopyright("Copyright © 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -1,4 +1,4 @@
-﻿namespace Debuggee
+﻿namespace Watch3D.Test.Debuggee
 {
     public class Triangle
     {

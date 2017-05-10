@@ -1,8 +1,8 @@
 ﻿using Microsoft.VisualStudio.DebuggerVisualizers;
 using Microsoft.VisualStudio.Shell;
-using Watch3D.Visualizer;
+using Watch3D.VisualizerServices;
 
-namespace DebuggeeVisualizer
+namespace Watch3D.Test.DebuggeeVisualizer
 {
     public class EntryPoint : DialogDebuggerVisualizer
     {

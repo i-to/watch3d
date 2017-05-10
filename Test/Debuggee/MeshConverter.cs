@@ -3,7 +3,7 @@ using System.Linq;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
 
-namespace Debuggee
+namespace Watch3D.Test.Debuggee
 {
     class MeshConverter
     {

@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace Debuggee
+namespace Watch3D.Test.Debuggee
 {
     static class MeshStringBuilder
     {

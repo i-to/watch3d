@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Debuggee;
-using Watch3D.Visualizer;
+using Watch3D.Test.Debuggee;
+using Watch3D.VisualizerServices;
 
-namespace DebuggeeVisualizer
+namespace Watch3D.Test.DebuggeeVisualizer
 {
     static class InteropConverter
     {

@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Debuggee", "Test\Debuggee\D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebuggeeVisualizer", "Test\DebuggeeVisualizer\DebuggeeVisualizer.csproj", "{69D9638A-F8D0-4835-B4BF-0BE42597C0F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Visualizer", "Visualizer\Visualizer.csproj", "{27F90313-FDCF-4571-BAB4-050AE0FC07B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisualizerServices", "VisualizerServices\VisualizerServices.csproj", "{27F90313-FDCF-4571-BAB4-050AE0FC07B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

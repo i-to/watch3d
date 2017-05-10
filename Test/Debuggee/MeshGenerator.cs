@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Debuggee
+namespace Watch3D.Test.Debuggee
 {
     class MeshGenerator
     {

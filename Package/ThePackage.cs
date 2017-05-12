@@ -25,7 +25,7 @@ namespace Watch3D.Package
         MenuCommands MenuCommands;
         ExpressionReader ExpressionReader;
         DebuggerState DebuggerState;
-        Scene Scene;
+        SceneViewModel SceneViewModel;
         VisualizerService VisualizerService;
 
         public ThePackage()
@@ -53,15 +53,15 @@ namespace Watch3D.Package
             var expressionFactory = new TestDebuggeeExpressionFactory();
             ExpressionReader = new ExpressionReader(expressionFactory, debugContext);
             DebuggerState = new DteDebuggerState(debugger);
-            Scene = new Scene();
-            VisualizerService = new WatchVisualizerService(Scene);
+            SceneViewModel = new SceneViewModel();
+            VisualizerService = new WatchVisualizerService(SceneViewModel);
         }
 
         TheToolWindowPane CreateToolWindow() =>
             new TheToolWindowPane
             {
                 Caption = "Watch 3D",
-                Content = new TheToolWindowControl(Scene, ExpressionReader, DebuggerState)
+                Content = new TheToolWindowControl(SceneViewModel, ExpressionReader, DebuggerState)
             };
 
         protected override WindowPane InstantiateToolWindow(Type toolWindowType) =>

@@ -28,8 +28,11 @@
                 ShowCoordinateSystem="True"
                 Title="Empty"
                 ItemsSource="{Binding Path=SceneItems}"
-                MinWidth="300"
-                />
+                MinWidth="300">
+                <helix:HelixViewport3D.ZoomExtentsGesture>
+                    <MouseGesture MouseAction="LeftDoubleClick" />
+                </helix:HelixViewport3D.ZoomExtentsGesture>
+            </helix:HelixViewport3D>
             <GridSplitter Grid.Column="1" Width="3" VerticalAlignment="Stretch" HorizontalAlignment="Center" ShowsPreview="False"/>
             <ListBox 
                 Grid.Column="2"

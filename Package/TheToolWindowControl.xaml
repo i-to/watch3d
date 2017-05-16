@@ -7,22 +7,35 @@
              Background="{DynamicResource VsBrush.Window}"
              Foreground="{DynamicResource VsBrush.WindowText}"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300"
+             d:DesignHeight="300" d:DesignWidth="500"
              Name="This">
-    <Grid>
+    <Grid DataContext="{Binding ElementName=This, Path=Scene}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <helix:HelixViewport3D
-            x:Name="Viewport"
-            Grid.Row="0"
-            ZoomExtentsWhenLoaded="True"
-            ShowViewCube="True"
-            ShowCoordinateSystem="True"
-            Title="Empty"
-            ItemsSource="{Binding ElementName=This, Path=Scene.SceneItems}"
-            />
+        <Grid Grid.Row="0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <helix:HelixViewport3D
+                x:Name="Viewport"
+                Grid.Column="0"
+                ZoomExtentsWhenLoaded="True"
+                ShowViewCube="True"
+                ShowCoordinateSystem="True"
+                Title="Empty"
+                ItemsSource="{Binding Path=SceneItems}"
+                MinWidth="300"
+                />
+            <GridSplitter Grid.Column="1" Width="3" VerticalAlignment="Stretch" HorizontalAlignment="Center" ShowsPreview="False"/>
+            <ListBox 
+                Grid.Column="2"
+                ItemsSource="{Binding Path=SceneItems}"
+                DockPanel.Dock="Right" />
+        </Grid>
         <DockPanel Grid.Row="1" LastChildFill="True">
             <Label DockPanel.Dock="Left" Content="Mesh symbol name"></Label>
             <Button x:Name="AddButton" DockPanel.Dock="Right" Content="Add" Click="Add"/>

@@ -1,16 +1,10 @@
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using HelixToolkit.Wpf;
 
 namespace Watch3D.Core
 {
-    public interface Scene
-    {
-        void AddMesh(MeshGeometry3D mesh);
-    }
-
     public class SceneViewModel : Scene
     {
         public ObservableCollection<Visual3D> SceneItems { get; }
@@ -29,7 +23,11 @@ namespace Watch3D.Core
         public void AddMesh(MeshGeometry3D mesh)
         {
             var model = CreateModel(mesh);
-            var visual = new ModelVisual3D {Content = model};
+            var visual = new SceneItemVisual
+            {
+                Content = model,
+                SceneItemName = "Mesh"
+            };
             SceneItems.Add(visual);
         }
 

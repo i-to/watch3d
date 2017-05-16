@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Watch3D.Test.DebuggeeVisualizer;
+using Watch3D.VisualizerServices;
 
 [assembly: DebuggerVisualizer(
     typeof(EntryPoint),

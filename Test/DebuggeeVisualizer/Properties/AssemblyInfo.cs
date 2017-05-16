@@ -1,11 +1,26 @@
-﻿using System.Reflection;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
+using System.Reflection;
 using System.Runtime.InteropServices;
+using Watch3D.Test.DebuggeeVisualizer;
 
-[assembly: System.Diagnostics.DebuggerVisualizer(
-    typeof(Watch3D.Test.DebuggeeVisualizer.EntryPoint),
-    typeof(Watch3D.Test.DebuggeeVisualizer.MeshObjectSource),
+[assembly: DebuggerVisualizer(
+    typeof(EntryPoint),
+    typeof(ObjectSource),
     Target = typeof(Watch3D.Test.Debuggee.Mesh),
-    Description = "Send to Watch3D window")]
+    Description = "View in Watch3D")]
+
+[assembly: DebuggerVisualizer(
+    typeof(EntryPoint),
+    typeof(ObjectSource),
+    Target = typeof(Watch3D.Test.Debuggee.Point),
+    Description = "View in Watch3D")]
+
+[assembly: DebuggerVisualizer(
+    typeof(EntryPoint),
+    typeof(ObjectSource),
+    Target = typeof(List<Watch3D.Test.Debuggee.Point>),
+    Description = "View in Watch3D")]
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information

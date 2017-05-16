@@ -7,5 +7,7 @@ namespace Watch3D.VisualizerServices
     public interface VisualizerService
     {
         void ShowMesh(InteropMesh mesh);
+        void ShowPoints(InteropPoints points);
+        void ShowPoint(InteropPoint point);
     }
 }

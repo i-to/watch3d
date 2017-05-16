@@ -6,12 +6,18 @@ namespace Watch3D.Core
 {
     public class InteropConverter
     {
-        public static MeshGeometry3D Convert(InteropMesh interopMesh) =>
+        public static MeshGeometry3D ConvertMesh(InteropMesh interopMesh) =>
             new MeshGeometry3D
             {
                 Positions = ConvertPositions(interopMesh.VertexData),
                 TriangleIndices = ConvertIndices(interopMesh.TrianglesData)
             };
+
+        public static Point3DCollection ConvertPoints(InteropPoints points) =>
+            ConvertPositions(points.PointsData);
+
+        public static Point3D ConvertPoint(InteropPoint point) =>
+            new Point3D(point.X, point.Y, point.Z);
 
         static Point3DCollection ConvertPositions(double[] vertexData)
         {

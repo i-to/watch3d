@@ -6,13 +6,16 @@ namespace Watch3D.Test.DebuggeeVisualizer
 {
     static class InteropConverter
     {
-        public static InteropMesh ToVisualizer(Mesh mesh) =>
+        public static InteropMesh ConvertMesh(Mesh mesh) =>
             new InteropMesh(
-                ConvertPoints(mesh.Vertices),
+                ConvertVertices(mesh.Vertices),
                 ConvertTriangles(mesh.Triangles)
             );
 
-        static double[] ConvertPoints(IReadOnlyList<Point> points)
+        public static InteropPoints ConvertPoints(IReadOnlyList<Point> points) =>
+            new InteropPoints(ConvertVertices(points));
+
+        static double[] ConvertVertices(IReadOnlyList<Point> points)
         {
             var count = points.Count;
             var result = new double[3 * count];
@@ -20,6 +23,9 @@ namespace Watch3D.Test.DebuggeeVisualizer
                 AddPoint(result, points[i], i);
             return result;
         }
+
+        public static InteropPoint ConvertPoint(Point point) =>
+            new InteropPoint(point.X, point.Y, point.Z);
 
         static void AddPoint(double[] vertexData, Point point, int index)
         {

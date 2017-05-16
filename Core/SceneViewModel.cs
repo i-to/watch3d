@@ -31,6 +31,18 @@ namespace Watch3D.Core
             SceneItems.Add(visual);
         }
 
+        public void AddPolyline(Point3DCollection points)
+        {
+            var visual = new TubeVisual3D {Path = new Point3DCollection(points), Diameter = 0.03, Fill = Brushes.Green};
+            SceneItems.Add(visual);
+        }
+
+        public void AddPoint(Point3D point)
+        {
+            var visual = new SphereVisual3D {Center = point, Radius = 0.03, Fill = Brushes.Yellow};
+            SceneItems.Add(visual);
+        }
+
         GeometryModel3D CreateModel(MeshGeometry3D mesh) =>
             new GeometryModel3D
             {

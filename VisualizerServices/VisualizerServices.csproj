@@ -34,6 +34,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InteropMesh.cs" />
+    <Compile Include="InteropPoint.cs" />
+    <Compile Include="InteropPoints.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VisualizerService.cs" />
   </ItemGroup>

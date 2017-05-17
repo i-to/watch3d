@@ -36,8 +36,14 @@
             <GridSplitter Grid.Column="1" Width="3" VerticalAlignment="Stretch" HorizontalAlignment="Center" ShowsPreview="False"/>
             <ListBox 
                 Grid.Column="2"
+                DockPanel.Dock="Right"
                 ItemsSource="{Binding Path=SceneItems}"
-                DockPanel.Dock="Right" />
+                SelectionMode="Extended"
+                >
+                <ListBox.CommandBindings>
+                    <CommandBinding Command="ApplicationCommands.Delete" Executed="Delete" />
+                </ListBox.CommandBindings>
+            </ListBox>
         </Grid>
         <DockPanel Grid.Row="1" LastChildFill="True">
             <Label DockPanel.Dock="Left" Content="Mesh symbol name"></Label>

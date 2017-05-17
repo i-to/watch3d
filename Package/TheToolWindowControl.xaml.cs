@@ -1,6 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using Watch3D.Core;
+using Watch3D.Package.Utility;
 
 namespace Watch3D.Package
 {
@@ -20,6 +22,12 @@ namespace Watch3D.Package
             DebuggerState = debuggerState;
             InitializeComponent();
             scene.InitializeScene();
+        }
+
+        void Delete(object sender, ExecutedRoutedEventArgs e)
+        {
+            var indices = ((ListBox)e.Source).SelectedItemIndices();
+            Scene.SceneItems.RemoveAtEach(indices);
         }
 
         void SetStatus(string title, string subtitle)

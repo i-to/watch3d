@@ -26,8 +26,18 @@ namespace Watch3D.Package
 
         void Delete(object sender, ExecutedRoutedEventArgs e)
         {
-            var indices = ((ListBox)e.Source).SelectedItemIndices();
+            var indices = ((ListBox)e.Source).GetSelectedItemIndices();
             Scene.SceneItems.RemoveAtEach(indices);
+        }
+
+        void ToggleShowHide(object sender, ExecutedRoutedEventArgs e)
+        {
+            var sceneItems = Scene.SceneItems;
+            var listBox = (ListBox)e.Source;
+            var indices = listBox.GetSelectedItemIndices();
+            foreach (var index in indices)
+                sceneItems.Modify(index, item => item.ToggleVisibility());
+            listBox.ResetSelection(indices);
         }
 
         void SetStatus(string title, string subtitle)

@@ -48,9 +48,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="UICommands.cs" />
     <Compile Include="Utility\Combinator.cs" />
     <Compile Include="DteDebugContext.cs" />
     <Compile Include="DteDebuggerState.cs" />
+    <Compile Include="Utility\IEnumerableExtensions.cs" />
     <Compile Include="Utility\IListExtensions.cs" />
     <Compile Include="Utility\ListBoxExtensions.cs" />
     <Compile Include="TestDebuggeeExpressionFactory.cs" />

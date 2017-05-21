@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:helix="clr-namespace:HelixToolkit.Wpf;assembly=HelixToolkit.Wpf"
+             xmlns:local="clr-namespace:Watch3D.Package"
              Background="{DynamicResource VsBrush.Window}"
              Foreground="{DynamicResource VsBrush.WindowText}"
              mc:Ignorable="d"
@@ -27,7 +28,7 @@
                 ShowViewCube="True"
                 ShowCoordinateSystem="True"
                 Title="Empty"
-                ItemsSource="{Binding Path=SceneItems}"
+                ItemsSource="{Binding Path=SceneItemsViewportAdapter.Visuals}"
                 MinWidth="300">
                 <helix:HelixViewport3D.ZoomExtentsGesture>
                     <MouseGesture MouseAction="LeftDoubleClick" />
@@ -42,7 +43,13 @@
                 >
                 <ListBox.CommandBindings>
                     <CommandBinding Command="ApplicationCommands.Delete" Executed="Delete" />
+                    <CommandBinding Command="local:UICommands.ToggleShowHide" Executed="ToggleShowHide"/>
                 </ListBox.CommandBindings>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" Foreground="{Binding Foreground}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
             </ListBox>
         </Grid>
         <DockPanel Grid.Row="1" LastChildFill="True">

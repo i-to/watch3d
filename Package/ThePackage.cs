@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel.Design;
 using System.Runtime.InteropServices;
 using EnvDTE;
@@ -7,6 +8,7 @@ using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Watch3D.Core;
+using Watch3D.Core.Utility;
 using Watch3D.VisualizerServices;
 
 namespace Watch3D.Package
@@ -53,7 +55,9 @@ namespace Watch3D.Package
             var expressionFactory = new TestDebuggeeExpressionFactory();
             ExpressionReader = new ExpressionReader(expressionFactory, debugContext);
             DebuggerState = new DteDebuggerState(debugger);
-            SceneViewModel = new SceneViewModel();
+            var sceneItems = new ObservableCollectionWithReplace<SceneItemViewModel>();
+            var sceneItemCollectionAdapter = new SceneItemCollectionAdapter(sceneItems);
+            SceneViewModel = new SceneViewModel(sceneItems, sceneItemCollectionAdapter);
             VisualizerService = new WatchVisualizerService(SceneViewModel);
         }
 

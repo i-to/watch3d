@@ -1,7 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Watch3D.Core;
+using Watch3D.Core.Debugger;
+using Watch3D.Core.Scene;
+using Watch3D.Core.Utility;
 using Watch3D.Package.Utility;
 
 namespace Watch3D.Package

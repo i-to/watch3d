@@ -8,6 +8,8 @@ using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Watch3D.Core;
+using Watch3D.Core.Debugger;
+using Watch3D.Core.Scene;
 using Watch3D.Core.Utility;
 using Watch3D.VisualizerServices;
 

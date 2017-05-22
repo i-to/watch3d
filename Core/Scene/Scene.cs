@@ -1,6 +1,6 @@
 using System.Windows.Media.Media3D;
 
-namespace Watch3D.Core
+namespace Watch3D.Core.Scene
 {
     public interface Scene
     {

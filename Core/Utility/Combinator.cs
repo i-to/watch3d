@@ -1,6 +1,6 @@
-﻿namespace Watch3D.Package.Utility
+﻿namespace Watch3D.Core.Utility
 {
-    static class Combinator
+    public static class Combinator
     {
         public static T Identity<T>(T value) => value;
     }

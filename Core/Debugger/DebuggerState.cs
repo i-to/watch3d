@@ -1,4 +1,4 @@
-﻿namespace Watch3D.Core
+﻿namespace Watch3D.Core.Debugger
 {
     public interface DebuggerState
     {

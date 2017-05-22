@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
+using Watch3D.Core.Utility;
 
-namespace Watch3D.Core
+namespace Watch3D.Core.Debugger
 {
     public class ExpressionReader
     {

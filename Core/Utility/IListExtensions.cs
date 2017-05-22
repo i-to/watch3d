@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Watch3D.Package.Utility
+namespace Watch3D.Core.Utility
 {
-    static class IListExtensions
+    public static class IListExtensions
     {
         public static void RemoveAtEach<T>(this IList<T> list, IEnumerable<int> indices)
         {

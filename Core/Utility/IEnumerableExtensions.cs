@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Watch3D.Package.Utility
+namespace Watch3D.Core.Utility
 {
     public static class IEnumerableExtensions
     {

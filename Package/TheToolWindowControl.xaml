@@ -42,12 +42,14 @@
                 SelectionMode="Extended"
                 >
                 <ListBox.CommandBindings>
-                    <CommandBinding Command="ApplicationCommands.Delete" Executed="Delete" />
-                    <CommandBinding Command="local:UICommands.ToggleShowHide" Executed="ToggleShowHide"/>
+                    <CommandBinding Command="ApplicationCommands.Delete" Executed="ExecuteDelete" />
+                    <CommandBinding Command="local:UICommands.ToggleShowHide" Executed="ExecuteToggleShowHide"/>
+                    <CommandBinding Command="local:UICommands.StartEditingListItemByKeyGesture" Executed="ExecuteStartEditing"/>
                 </ListBox.CommandBindings>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Name}" Foreground="{Binding Foreground}" />
+                        <local:EditableTextBox Text="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                               Foreground="{Binding Foreground}" />
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>

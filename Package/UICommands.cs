@@ -4,13 +4,24 @@ namespace Watch3D.Package
 {
     public class UICommands
     {
-        public static readonly RoutedUICommand ToggleShowHide;
+        public static readonly RoutedUICommand ToggleShowHide =
+            new RoutedUICommand(
+                "Show/Hide",
+                nameof(ToggleShowHide),
+                typeof(UICommands),
+                new InputGestureCollection { new KeyGesture(Key.Space) });
 
-        static UICommands()
-        {
-            var gesture = new InputGestureCollection {new KeyGesture(Key.Space)};
-            ToggleShowHide = new RoutedUICommand(
-                "Show/Hide", nameof(ToggleShowHide), typeof(UICommands), gesture);
-        }
+        public static readonly RoutedCommand StartEditingListItemByKeyGesture =
+            new RoutedCommand(
+                nameof(StartEditingListItemByKeyGesture),
+                typeof(UICommands),
+                new InputGestureCollection { new KeyGesture(Key.F2) });
+
+        public static readonly RoutedUICommand StartEditingListItemByMouseGesture =
+            new RoutedUICommand(
+                "Rename",
+                nameof(StartEditingListItemByMouseGesture),
+                typeof(UICommands),
+                new InputGestureCollection { new MouseGesture(MouseAction.LeftDoubleClick) });
     }
 }

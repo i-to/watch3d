@@ -14,6 +14,13 @@ namespace Watch3D.Package.Utility
                 .Select(o => listBox.Items.IndexOf(o))
                 .ToArray();
 
+        public static ListBoxItem GetFocusedItemContainer(this ListBox listBox) =>
+            listBox
+                .Items
+                .Cast<object>()
+                .Select(obj => (ListBoxItem)listBox.ItemContainerGenerator.ContainerFromItem(obj))
+                .FirstOrDefault(item => item.IsFocused);
+
         public static void ResetSelection(this ListBox listBox, IReadOnlyList<int> selectedIndices)
         {
             listBox.SelectedItems.Clear();

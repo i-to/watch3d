@@ -48,6 +48,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="SymbolInterpreter.cs" />
+    <Compile Include="EditableTextBox.xaml.cs">
+      <DependentUpon>EditableTextBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UICommands.cs" />
     <Compile Include="DteDebugContext.cs" />
     <Compile Include="DteDebuggerState.cs" />
@@ -61,6 +65,7 @@
     <Compile Include="TheToolWindowControl.xaml.cs">
       <DependentUpon>TheToolWindowControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utility\RoutedEventArgsExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -200,6 +205,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="EditableTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TheToolWindowControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

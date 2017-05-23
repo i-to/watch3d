@@ -14,7 +14,12 @@ namespace Watch3D.Core.Scene
         }
 
         public Visual3D Visual => Model.Visual;
-        public string Name => Model.Name;
+        public string Name
+        {
+            get { return Model.Name; }
+            set { Model.Name = value; }
+        }
+
         public bool IsVisible => !Model.IsHidden;
 
         public void ToggleVisibility()

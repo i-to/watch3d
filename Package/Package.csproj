@@ -49,6 +49,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CommandIds.cs" />
+    <Compile Include="CurrentSymbolProvider.cs" />
     <Compile Include="SymbolInterpreter.cs" />
     <Compile Include="ToolWindow\EditableTextBox.xaml.cs">
       <DependentUpon>EditableTextBox.xaml</DependentUpon>

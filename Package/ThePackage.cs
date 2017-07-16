@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel.Design;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using EnvDTE;
 using EnvDTE100;
@@ -31,6 +32,7 @@ namespace Watch3D.Package
         SceneViewModel SceneViewModel;
         VisualizerService VisualizerService;
         SymbolInterpreter SymbolInterpreter;
+        CurrentSymbolProvider CurrentSymbolProvider;
 
         public ThePackage()
         {
@@ -65,6 +67,7 @@ namespace Watch3D.Package
             SceneViewModel = new SceneViewModel(sceneItems, sceneItemCollectionAdapter);
             SymbolInterpreter = new SymbolInterpreter(ExpressionReader, DebuggerState, SceneViewModel);
             VisualizerService = new WatchVisualizerService(SceneViewModel);
+            CurrentSymbolProvider = new CurrentSymbolProvider(dte);
         }
 
         ThePane CreateToolWindow() =>
@@ -88,6 +91,8 @@ namespace Watch3D.Package
 
         void ExecuteAddSymbolFromEditor()
         {
+            var symbol = CurrentSymbolProvider.GetSelectedSymbol();
+            SymbolInterpreter.TryAddSceneItemFromSymbol(symbol);
         }
     }
 }

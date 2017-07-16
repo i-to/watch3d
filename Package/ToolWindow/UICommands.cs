@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace Watch3D.Package
+namespace Watch3D.Package.ToolWindow
 {
     public class UICommands
     {

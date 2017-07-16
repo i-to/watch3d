@@ -3,9 +3,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using Watch3D.Core.Scene;
 using Watch3D.Core.Utility;
-using Watch3D.Package.Utility;
 
-namespace Watch3D.Package
+namespace Watch3D.Package.ToolWindow
 {
     public partial class TheToolWindowControl : UserControl
     {
@@ -40,7 +39,7 @@ namespace Watch3D.Package
         void ExecuteStartEditing(object sender, ExecutedRoutedEventArgs e)
         {
             var listBoxItem = e.GetSource<ListBox>().GetFocusedItemContainer();
-            EditableTextBox.FindInParent(listBoxItem).StartEditing();
+            ToolWindow.EditableTextBox.FindInParent(listBoxItem).StartEditing();
         }
 
         void SetStatus(string title, string subtitle)

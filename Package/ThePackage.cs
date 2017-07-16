@@ -11,22 +11,21 @@ using Watch3D.Core;
 using Watch3D.Core.Debugger;
 using Watch3D.Core.Scene;
 using Watch3D.Core.Utility;
+using Watch3D.Package.Debugger;
+using Watch3D.Package.ToolWindow;
 using Watch3D.VisualizerServices;
 
 namespace Watch3D.Package
 {
     [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
-    [Guid("8dc410ba-6829-453f-9c37-403af79451fe")]
+    [Guid("8dc410ba-6829-453f-9c37-403af79451fe")] // Package GUID, duplicated in VSCT file.
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    [ProvideToolWindow(typeof(TheToolWindowPane))]
+    [ProvideToolWindow(typeof(ThePane))]
     [ProvideService(typeof(VisualizerService))]
     public class ThePackage : Microsoft.VisualStudio.Shell.Package
     {
-        readonly Guid CommandSet = new Guid("a174ef4e-4aae-4efe-8b6f-8bd386c2fd6a");
-        readonly int ShowToolWindowCommandId = 0x0100;
-
-        MenuCommands MenuCommands;
+        CommandsRegistrar CommandsRegistrar;
         ExpressionReader ExpressionReader;
         DebuggerState DebuggerState;
         SceneViewModel SceneViewModel;
@@ -50,8 +49,8 @@ namespace Watch3D.Package
         {
             base.Initialize();
             var commandService = this.GetService<IMenuCommandService>();
-            MenuCommands = new MenuCommands(commandService);
-            MenuCommands.RegisterCommand(CommandSet, ShowToolWindowCommandId, ShowToolWindow);
+            CommandsRegistrar = new CommandsRegistrar(commandService);
+            CommandsRegistrar.RegisterCommand(CommandIds.Watch3DCommandSet, CommandIds.ShowToolWindowCommandId, ShowToolWindow);
             var dte = this.GetService<DTE2, DTE>();
             var debugger = (Debugger5) dte.Debugger;
             var debugContext = new DteDebugContext(debugger);
@@ -65,21 +64,21 @@ namespace Watch3D.Package
             VisualizerService = new WatchVisualizerService(SceneViewModel);
         }
 
-        TheToolWindowPane CreateToolWindow() =>
-            new TheToolWindowPane
+        ThePane CreateToolWindow() =>
+            new ThePane
             {
                 Caption = "Watch 3D",
-                Content = new TheToolWindowControl(SceneViewModel, SymbolInterpreter)
+                Content = new ToolWindow.TheToolWindowControl(SceneViewModel, SymbolInterpreter)
             };
 
         protected override WindowPane InstantiateToolWindow(Type toolWindowType) =>
-            toolWindowType == typeof(TheToolWindowPane)
+            toolWindowType == typeof(ThePane)
                 ? CreateToolWindow()
                 : base.InstantiateToolWindow(toolWindowType);
 
         void ShowToolWindow()
         {
-            var window = FindToolWindow(typeof(TheToolWindowPane), 0, true);
+            var window = FindToolWindow(typeof(ThePane), 0, true);
             var windowFrame = (IVsWindowFrame) window.Frame;
             windowFrame.Show();
         }

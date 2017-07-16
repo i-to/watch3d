@@ -50,7 +50,10 @@ namespace Watch3D.Package
             base.Initialize();
             var commandService = this.GetService<IMenuCommandService>();
             CommandsRegistrar = new CommandsRegistrar(commandService);
-            CommandsRegistrar.RegisterCommand(CommandIds.Watch3DCommandSet, CommandIds.ShowToolWindowCommandId, ShowToolWindow);
+            CommandsRegistrar.RegisterCommand(
+                CommandIds.Watch3DCommandSet, CommandIds.ShowToolWindowCommandId, ExecuteShowToolWindow);
+            CommandsRegistrar.RegisterCommand(
+                CommandIds.Watch3DCommandSet, CommandIds.AddSymbolFromEditorCommandId, ExecuteAddSymbolFromEditor);
             var dte = this.GetService<DTE2, DTE>();
             var debugger = (Debugger5) dte.Debugger;
             var debugContext = new DteDebugContext(debugger);
@@ -76,11 +79,15 @@ namespace Watch3D.Package
                 ? CreateToolWindow()
                 : base.InstantiateToolWindow(toolWindowType);
 
-        void ShowToolWindow()
+        void ExecuteShowToolWindow()
         {
             var window = FindToolWindow(typeof(ThePane), 0, true);
             var windowFrame = (IVsWindowFrame) window.Frame;
             windowFrame.Show();
+        }
+
+        void ExecuteAddSymbolFromEditor()
+        {
         }
     }
 }

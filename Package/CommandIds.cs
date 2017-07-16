@@ -7,5 +7,6 @@ namespace Watch3D.Package
     {
         public static readonly Guid Watch3DCommandSet = new Guid("a174ef4e-4aae-4efe-8b6f-8bd386c2fd6a");
         public static readonly int ShowToolWindowCommandId = 1;
+        public static readonly int AddSymbolFromEditorCommandId = 2;
     }
 }

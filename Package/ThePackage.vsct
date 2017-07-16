@@ -17,6 +17,13 @@
           <ButtonText>Watch 3D</ButtonText>
         </Strings>
       </Button>
+      <Button guid="Watch3DCommandSet" id="AddSymbolFromEditorCommandId" priority="0x0100" type="Button">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_CODEWIN_DEBUG_WATCH"/>
+        <Icon guid="guidImages" id="bmpPicSearch" />
+        <Strings>
+          <ButtonText>Watch 3D - Add from symbol</ButtonText>
+        </Strings>
+      </Button>
     </Buttons>
 
     <Bitmaps>
@@ -32,6 +39,7 @@
 
     <GuidSymbol name="Watch3DCommandSet" value="{a174ef4e-4aae-4efe-8b6f-8bd386c2fd6a}">
       <IDSymbol name="ShowToolWindowCommandId" value="1" />
+      <IDSymbol name="AddSymbolFromEditorCommandId" value="2" />
     </GuidSymbol>
 
     <GuidSymbol name="guidImages" value="{ea32826d-71a7-4c4a-b3e9-e891683c00ba}" >

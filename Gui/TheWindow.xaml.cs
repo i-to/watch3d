@@ -1,11 +1,17 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Watch3D.Core.Scene;
 using Watch3D.Core.Utility;
 
-namespace Watch3D.Package.ToolWindow
+namespace Watch3D.Gui
 {
+    public interface SymbolInterpreter
+    {
+        Tuple<string, string> TryAddSceneItemFromSymbol(string meshSymbol);
+    }
+
     public partial class TheToolWindowControl : UserControl
     {
         public SymbolInterpreter SymbolInterpreter { get; }
@@ -39,7 +45,7 @@ namespace Watch3D.Package.ToolWindow
         void ExecuteStartEditing(object sender, ExecutedRoutedEventArgs e)
         {
             var listBoxItem = e.GetSource<ListBox>().GetFocusedItemContainer();
-            ToolWindow.EditableTextBox.FindInParent(listBoxItem).StartEditing();
+            Gui.EditableTextBox.FindInParent(listBoxItem).StartEditing();
         }
 
         void SetStatus(string title, string subtitle)

@@ -50,24 +50,15 @@
   <ItemGroup>
     <Compile Include="CommandIds.cs" />
     <Compile Include="CurrentSymbolProvider.cs" />
-    <Compile Include="SymbolInterpreter.cs" />
-    <Compile Include="ToolWindow\EditableTextBox.xaml.cs">
-      <DependentUpon>EditableTextBox.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ToolWindow\UICommands.cs" />
+    <Compile Include="DebugSymbolInterpreter.cs" />
     <Compile Include="Debugger\DteDebugContext.cs" />
     <Compile Include="Debugger\DteDebuggerState.cs" />
-    <Compile Include="ToolWindow\ListBoxExtensions.cs" />
     <Compile Include="Debugger\TestDebuggeeExpressionFactory.cs" />
     <Compile Include="CommandsRegistrar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceProviderExtensions.cs" />
     <Compile Include="ThePackage.cs" />
     <Compile Include="ToolWindow\ThePane.cs" />
-    <Compile Include="ToolWindow\TheWindow.xaml.cs">
-      <DependentUpon>TheWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ToolWindow\RoutedEventArgsExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -207,19 +198,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="ToolWindow\EditableTextBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ToolWindow\TheWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{30e583e0-47ad-4f24-91b1-de67d1588b6f}</Project>
       <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gui\Gui.csproj">
+      <Project>{98adf39c-47a2-4a1b-84d9-12387d3ae410}</Project>
+      <Name>Gui</Name>
     </ProjectReference>
     <ProjectReference Include="..\VisualizerServices\VisualizerServices.csproj">
       <Project>{27F90313-FDCF-4571-BAB4-050AE0FC07B7}</Project>

@@ -5,7 +5,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 
-namespace Watch3D.Package.ToolWindow
+namespace Watch3D.Gui
 {
     public partial class EditableTextBox : UserControl
     {

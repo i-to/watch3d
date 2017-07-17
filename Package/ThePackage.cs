@@ -15,6 +15,7 @@ using Watch3D.Core.Utility;
 using Watch3D.Package.Debugger;
 using Watch3D.Package.ToolWindow;
 using Watch3D.VisualizerServices;
+using TheToolWindowControl = Watch3D.Gui.TheToolWindowControl;
 
 namespace Watch3D.Package
 {
@@ -31,7 +32,7 @@ namespace Watch3D.Package
         DebuggerState DebuggerState;
         SceneViewModel SceneViewModel;
         VisualizerService VisualizerService;
-        SymbolInterpreter SymbolInterpreter;
+        DebugSymbolInterpreter SymbolInterpreter;
         CurrentSymbolProvider CurrentSymbolProvider;
 
         public ThePackage()
@@ -65,7 +66,7 @@ namespace Watch3D.Package
             var sceneItems = new ObservableCollectionWithReplace<SceneItemViewModel>();
             var sceneItemCollectionAdapter = new SceneItemCollectionAdapter(sceneItems);
             SceneViewModel = new SceneViewModel(sceneItems, sceneItemCollectionAdapter);
-            SymbolInterpreter = new SymbolInterpreter(ExpressionReader, DebuggerState, SceneViewModel);
+            SymbolInterpreter = new DebugSymbolInterpreter(ExpressionReader, DebuggerState, SceneViewModel);
             VisualizerService = new WatchVisualizerService(SceneViewModel);
             CurrentSymbolProvider = new CurrentSymbolProvider(dte);
         }
@@ -74,7 +75,7 @@ namespace Watch3D.Package
             new ThePane
             {
                 Caption = "Watch 3D",
-                Content = new ToolWindow.TheToolWindowControl(SceneViewModel, SymbolInterpreter)
+                Content = new TheToolWindowControl(SceneViewModel, SymbolInterpreter)
             };
 
         protected override WindowPane InstantiateToolWindow(Type toolWindowType) =>

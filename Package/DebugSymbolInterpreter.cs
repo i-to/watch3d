@@ -1,16 +1,17 @@
 using System;
 using Watch3D.Core.Debugger;
 using Watch3D.Core.Scene;
+using Watch3D.Gui;
 
 namespace Watch3D.Package
 {
-    public class SymbolInterpreter
+    public class DebugSymbolInterpreter : SymbolInterpreter
     {
         public ExpressionReader ExpressionReader { get; }
         public DebuggerState DebuggerState { get; }
         public Scene Scene { get; }
 
-        public SymbolInterpreter(ExpressionReader expressionReader, DebuggerState debuggerState, Scene scene)
+        public DebugSymbolInterpreter(ExpressionReader expressionReader, DebuggerState debuggerState, Scene scene)
         {
             ExpressionReader = expressionReader;
             DebuggerState = debuggerState;

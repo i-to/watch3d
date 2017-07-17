@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Watch3D.Package.ToolWindow
+namespace Watch3D.Gui
 {
     public static class RoutedEventArgsExtensions
     {

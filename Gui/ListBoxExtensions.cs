@@ -3,7 +3,7 @@ using System.Linq;
 using System.Windows.Controls;
 using Watch3D.Core.Utility;
 
-namespace Watch3D.Package.ToolWindow
+namespace Watch3D.Gui
 {
     static class ListBoxExtensions
     {

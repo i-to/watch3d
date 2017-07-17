@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Watch3D.Test.Debuggee")]
-[assembly: AssemblyDescription("Sample debuggee project for testing Watch 3D debugging capabilities.")]
+[assembly: AssemblyTitle("Watch3D.Test.Utility")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Watch 3D")]
-[assembly: AssemblyCopyright("Copyright © 2017")]
+[assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("b11f6cf3-0b7e-492d-b8b9-a45ee441417a")]
+[assembly: Guid("97058654-f494-4a01-8ff7-b79701334e19")]
 
 // Version information for an assembly consists of the following four values:
 //

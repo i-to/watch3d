@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntryPoint.cs" />
+    <Compile Include="SymbolInterpreterStub.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -88,6 +89,10 @@
     <ProjectReference Include="..\..\Gui\Gui.csproj">
       <Project>{98adf39c-47a2-4a1b-84d9-12387d3ae410}</Project>
       <Name>Gui</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{97058654-f494-4a01-8ff7-b79701334e19}</Project>
+      <Name>Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

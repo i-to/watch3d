@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Linq;
-using HelixToolkit.Wpf;
+using Watch3D.Test.Utility;
 
 namespace Watch3D.Test.Debuggee
 {
     class EntryPoint
     {
-        static Mesh LoadModel(string name)
+        static Mesh LoadModel(TestModelId id)
         {
-            var loader = new ModelImporter();
-            var group = loader.Load($"Models\\{name}");
+            var testModels = new TestModels();
+            var group = testModels.LoadTestModel(id);
             var converter = new MeshConverter();
             var models = converter.Convert(group.Children).ToArray();
             return models[0];
@@ -18,11 +18,15 @@ namespace Watch3D.Test.Debuggee
         static void Main(string[] args)
         {
             var triangle = MeshGenerator.CreateSingleTriangle();
-            var sphere = LoadModel("sphere.stl");
-            var teapot = LoadModel("teapot_quads_tex.obj");
-            var bunny = LoadModel("bunny.obj");
+            var sphere = LoadModel(TestModelId.Sphere);
+            var teapot = LoadModel(TestModelId.Teapot);
+            var bunny = LoadModel(TestModelId.Bunny);
             // Set a breakpoint on the line below and use Watch3D to examine 'mesh' object.
-            var count = triangle.Triangles.Count + sphere.Triangles.Count + teapot.Triangles.Count + bunny.Triangles.Count;
+            var count = 
+                triangle.Triangles.Count
+              + sphere.Triangles.Count
+              + teapot.Triangles.Count
+              + bunny.Triangles.Count;
             Console.WriteLine($"Loaded {count} triangles.");
             Console.ReadLine();
         }

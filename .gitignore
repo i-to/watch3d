@@ -7,6 +7,7 @@ Gui/obj/*
 VisualizerServices/obj/*
 Test/Debuggee/obj/*
 Test/DebuggeeVisualizer/obj/*
-Test/Debuggee/.vs/*
 Test/GuiStandalone/obj/*
+Test/Utility/obj/*
+Test/Debuggee/.vs/*
 Test/Debuggee/packages/*

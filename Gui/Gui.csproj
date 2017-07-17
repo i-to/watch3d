@@ -55,8 +55,9 @@
     <Compile Include="ListBoxExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoutedEventArgsExtensions.cs" />
-    <Compile Include="TheWindow.xaml.cs">
-      <DependentUpon>TheWindow.xaml</DependentUpon>
+    <Compile Include="SymbolInterpreter.cs" />
+    <Compile Include="ToolWindowControl.xaml.cs">
+      <DependentUpon>ToolWindowControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UICommands.cs" />
   </ItemGroup>
@@ -68,7 +69,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="TheWindow.xaml">
+    <Page Include="ToolWindowControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using System.ComponentModel.Design;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
 using EnvDTE;
 using EnvDTE100;
@@ -12,10 +10,10 @@ using Watch3D.Core;
 using Watch3D.Core.Debugger;
 using Watch3D.Core.Scene;
 using Watch3D.Core.Utility;
+using Watch3D.Gui;
 using Watch3D.Package.Debugger;
 using Watch3D.Package.ToolWindow;
 using Watch3D.VisualizerServices;
-using TheToolWindowControl = Watch3D.Gui.TheToolWindowControl;
 
 namespace Watch3D.Package
 {
@@ -75,7 +73,7 @@ namespace Watch3D.Package
             new ThePane
             {
                 Caption = "Watch 3D",
-                Content = new TheToolWindowControl(SceneViewModel, SymbolInterpreter)
+                Content = new ToolWindowControl(SceneViewModel, SymbolInterpreter)
             };
 
         protected override WindowPane InstantiateToolWindow(Type toolWindowType) =>

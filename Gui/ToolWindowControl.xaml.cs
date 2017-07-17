@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Watch3D.Core.Scene;
@@ -7,17 +6,12 @@ using Watch3D.Core.Utility;
 
 namespace Watch3D.Gui
 {
-    public interface SymbolInterpreter
-    {
-        Tuple<string, string> TryAddSceneItemFromSymbol(string meshSymbol);
-    }
-
-    public partial class TheToolWindowControl : UserControl
+    public partial class ToolWindowControl : UserControl
     {
         public SymbolInterpreter SymbolInterpreter { get; }
         public SceneViewModel Scene { get; }
 
-        public TheToolWindowControl(
+        public ToolWindowControl(
             SceneViewModel scene,
             SymbolInterpreter symbolInterpreter)
         {

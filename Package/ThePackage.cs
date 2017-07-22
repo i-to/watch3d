@@ -8,8 +8,9 @@ using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Watch3D.Core;
 using Watch3D.Core.Debugger;
-using Watch3D.Core.Scene;
+using Watch3D.Core.Model;
 using Watch3D.Core.Utility;
+using Watch3D.Core.ViewModel;
 using Watch3D.Gui;
 using Watch3D.Package.Debugger;
 using Watch3D.Package.ToolWindow;
@@ -32,6 +33,7 @@ namespace Watch3D.Package
         VisualizerService VisualizerService;
         DebugSymbolInterpreter SymbolInterpreter;
         CurrentSymbolProvider CurrentSymbolProvider;
+        ToolViewModel ToolViewModel;
 
         public ThePackage()
         {
@@ -65,6 +67,7 @@ namespace Watch3D.Package
             var sceneItemCollectionAdapter = new SceneItemCollectionAdapter(sceneItems);
             SceneViewModel = new SceneViewModel(sceneItems, sceneItemCollectionAdapter);
             SymbolInterpreter = new DebugSymbolInterpreter(ExpressionReader, DebuggerState, SceneViewModel);
+            ToolViewModel = new ToolViewModel(SceneViewModel, SymbolInterpreter);
             VisualizerService = new WatchVisualizerService(SceneViewModel);
             CurrentSymbolProvider = new CurrentSymbolProvider(dte);
         }
@@ -73,7 +76,7 @@ namespace Watch3D.Package
             new ThePane
             {
                 Caption = "Watch 3D",
-                Content = new ToolWindowControl(SceneViewModel, SymbolInterpreter)
+                Content = new ToolView(ToolViewModel)
             };
 
         protected override WindowPane InstantiateToolWindow(Type toolWindowType) =>
@@ -91,7 +94,7 @@ namespace Watch3D.Package
         void ExecuteAddSymbolFromEditor()
         {
             var symbol = CurrentSymbolProvider.GetSelectedSymbol();
-            SymbolInterpreter.TryAddSceneItemFromSymbol(symbol);
+            SymbolInterpreter.TryAddItemBySymbolName(symbol);
         }
     }
 }

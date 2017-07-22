@@ -4,7 +4,8 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Windows.Media.Media3D;
-using Watch3D.Core.Scene;
+using Watch3D.Core.Model;
+using Watch3D.Core.ViewModel;
 
 namespace Watch3D.Core.Utility
 {

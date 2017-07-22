@@ -1,6 +1,6 @@
 using System;
 using Watch3D.Core.Debugger;
-using Watch3D.Core.Scene;
+using Watch3D.Core.Model;
 using Watch3D.Gui;
 
 namespace Watch3D.Package
@@ -18,7 +18,7 @@ namespace Watch3D.Package
             Scene = scene;
         }
 
-        public Tuple<string, string> TryAddSceneItemFromSymbol(string meshSymbol)
+        public Tuple<string, string> TryAddItemBySymbolName(string meshSymbol)
         {
             if (!DebuggerState.IsBreakMode)
                 return Tuple.Create("ERROR", "Cannot evaluate expression while not in break mode.");

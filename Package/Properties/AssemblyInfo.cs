@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.Shell;
 
 [assembly: ProvideCodeBase(AssemblyName = "HelixToolkit", CodeBase = "$PackageFolder$\\HelixToolkit.dll")]
 [assembly: ProvideCodeBase(AssemblyName = "HelixToolkit.Wpf", CodeBase = "$PackageFolder$\\HelixToolkit.Wpf.dll")]
+[assembly: ProvideCodeBase(AssemblyName = "Xceed.Wpf.Toolkit", CodeBase = "$PackageFolder$\\Xceed.Wpf.Toolkit.dll")]
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information

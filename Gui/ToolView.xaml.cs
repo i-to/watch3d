@@ -1,45 +1,38 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Watch3D.Core.Scene;
-using Watch3D.Core.Utility;
 
 namespace Watch3D.Gui
 {
-    public partial class ToolWindowControl : UserControl
+    public partial class ToolView : UserControl
     {
-        public SymbolInterpreter SymbolInterpreter { get; }
-        public SceneViewModel Scene { get; }
+        public ToolViewModel ViewModel { get; }
 
-        public ToolWindowControl(
-            SceneViewModel scene,
-            SymbolInterpreter symbolInterpreter)
+        public ToolView(ToolViewModel viewModel)
         {
-            Scene = scene;
-            SymbolInterpreter = symbolInterpreter;
+            ViewModel = viewModel;
             InitializeComponent();
-            scene.InitializeScene();
+            ViewModel.Scene.InitializeScene();
         }
 
         void ExecuteDelete(object sender, ExecutedRoutedEventArgs e)
         {
             var indices = e.GetSource<ListBox>().GetSelectedItemIndices();
-            Scene.SceneItems.RemoveAtEach(indices);
+            ViewModel.DeleteSceneItems(indices);
         }
 
         void ExecuteToggleShowHide(object sender, ExecutedRoutedEventArgs e)
         {
             var listBox = e.GetSource<ListBox>();
             var indices = listBox.GetSelectedItemIndices();
-            foreach (var index in indices)
-                Scene.SceneItems.Modify(index, item => item.ToggleVisibility());
+            ViewModel.ToggleSceneItemsVisibility(indices);
             listBox.ResetSelection(indices);
         }
 
         void ExecuteStartEditing(object sender, ExecutedRoutedEventArgs e)
         {
             var listBoxItem = e.GetSource<ListBox>().GetFocusedItemContainer();
-            Gui.EditableTextBox.FindInParent(listBoxItem).StartEditing();
+            EditableTextBox.FindInParent(listBoxItem).StartEditing();
         }
 
         void SetStatus(string title, string subtitle)
@@ -48,9 +41,9 @@ namespace Watch3D.Gui
             Viewport.SubTitle = subtitle;
         }
 
-        void Add(object sender, RoutedEventArgs e)
+        void AddBySymbolName(object sender, RoutedEventArgs e)
         {
-            var status = SymbolInterpreter.TryAddSceneItemFromSymbol(MeshSymbol.Text);
+            var status = ViewModel.TryAddItemBySymbolName(MeshSymbol.Text);
             SetStatus(status.Item1, status.Item2);
         }
     }

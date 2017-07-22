@@ -47,18 +47,35 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
+    <Reference Include="Xceed.Wpf.Toolkit, Version=3.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.1\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EditableTextBox.xaml.cs">
       <DependentUpon>EditableTextBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="ListBoxExtensions.cs" />
+    <Compile Include="MeshPropertiesView.xaml.cs">
+      <DependentUpon>MeshPropertiesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PointPropertiesView.xaml.cs">
+      <DependentUpon>PointPropertiesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PolylinePropertiesView.xaml.cs">
+      <DependentUpon>PolylinePropertiesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoutedEventArgsExtensions.cs" />
-    <Compile Include="SymbolInterpreter.cs" />
-    <Compile Include="ToolWindowControl.xaml.cs">
-      <DependentUpon>ToolWindowControl.xaml</DependentUpon>
+    <Compile Include="SceneItemPropertiesView.xaml.cs">
+      <DependentUpon>SceneItemPropertiesView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SymbolInterpreter.cs" />
+    <Compile Include="ToolView.xaml.cs">
+      <DependentUpon>ToolView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolViewModel.cs" />
     <Compile Include="UICommands.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -69,7 +86,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ToolWindowControl.xaml">
+    <Page Include="MeshPropertiesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PointPropertiesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PolylinePropertiesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SceneItemPropertiesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

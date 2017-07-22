@@ -8,7 +8,7 @@ namespace Watch3D.Test.Debuggee
     {
         static Mesh LoadModel(TestModelId id)
         {
-            var testModels = new TestModels();
+            var testModels = new TestGeometry();
             var group = testModels.LoadTestModel(id);
             var converter = new MeshConverter();
             var models = converter.Convert(group.Children).ToArray();

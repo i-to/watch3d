@@ -1,12 +1,13 @@
+using Watch3D.Core.Model;
 using Watch3D.VisualizerServices;
 
 namespace Watch3D.Core
 {
     public class WatchVisualizerService : VisualizerService
     {
-        readonly Scene.Scene Scene;
+        readonly Scene Scene;
 
-        public WatchVisualizerService(Scene.Scene scene)
+        public WatchVisualizerService(Scene scene)
         {
             Scene = scene;
         }

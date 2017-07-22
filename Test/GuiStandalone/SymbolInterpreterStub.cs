@@ -5,7 +5,7 @@ namespace Watch3D.Test.GuiStandalone
 {
     public class SymbolInterpreterStub : SymbolInterpreter
     {
-        public Tuple<string, string> TryAddSceneItemFromSymbol(string meshSymbol) =>
+        public Tuple<string, string> TryAddItemBySymbolName(string meshSymbol) =>
             Tuple.Create("STUB", "STUB");
     }
 }

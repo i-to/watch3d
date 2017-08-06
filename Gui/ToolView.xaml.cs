@@ -12,7 +12,7 @@ namespace Watch3D.Gui
         {
             ViewModel = viewModel;
             InitializeComponent();
-            ViewModel.Scene.InitializeScene();
+            ViewModel.InitializeScene();
         }
 
         void ExecuteDelete(object sender, ExecutedRoutedEventArgs e)
@@ -35,16 +35,7 @@ namespace Watch3D.Gui
             EditableTextBox.FindInParent(listBoxItem).StartEditing();
         }
 
-        void SetStatus(string title, string subtitle)
-        {
-            Viewport.Title = title;
-            Viewport.SubTitle = subtitle;
-        }
-
-        void AddBySymbolName(object sender, RoutedEventArgs e)
-        {
-            var status = ViewModel.TryAddItemBySymbolName(MeshSymbol.Text);
-            SetStatus(status.Item1, status.Item2);
-        }
+        void AddBySymbolName(object sender, RoutedEventArgs e) =>
+            ViewModel.TryAddItemBySymbolName(MeshSymbol.Text);
     }
 }

@@ -12,7 +12,12 @@ namespace Watch3D.Package.Debugger
             Debugger = debugger;
         }
 
-        public string EvaluateExpression(string expression) => 
-            Debugger.GetExpression(expression).Value;
+        public EvaluatedExpression EvaluateExpression(string expression)
+        {
+            var result = Debugger.GetExpression(expression, false);
+            if (!result.IsValidValue)
+                throw new EvaluationFailedException($"Evaluation result: '{result.Value}'");
+            return new EvaluatedExpression(result.Value, result.Type);
+        }
     }
 }

@@ -4,7 +4,7 @@ namespace Watch3D.Test.Debuggee
 {
     class MeshGenerator
     {
-        public static Mesh CreateSingleTriangle()
+        public Mesh CreateSingleTriangle()
         {
             var o = new Point(0, 0, 0.5);
             var a = new Point(0.5, 0, 0.5);

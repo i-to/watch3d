@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Watch3D.Core.Model;
+﻿using System.Collections.Generic;
 using Watch3D.Core.Utility;
 using Watch3D.Core.ViewModel;
 
@@ -10,12 +8,17 @@ namespace Watch3D.Gui
     {
         public SceneViewModel Scene { get; }
         public SymbolInterpreter SymbolInterpreter { get; }
+        public SceneInitializer SceneInitializer { get; }
 
-        public ToolViewModel(SceneViewModel scene, SymbolInterpreter symbolInterpreter)
+        public ToolViewModel(SceneViewModel scene, SymbolInterpreter symbolInterpreter, SceneInitializer sceneInitializer)
         {
             Scene = scene;
             SymbolInterpreter = symbolInterpreter;
+            SceneInitializer = sceneInitializer;
         }
+
+        public void InitializeScene() =>
+            SceneInitializer.InitializeScene(Scene);
 
         public void DeleteSceneItems(IReadOnlyList<int> indices) =>
             Scene.SceneItems.RemoveAtEach(indices);
@@ -26,7 +29,7 @@ namespace Watch3D.Gui
                 Scene.SceneItems.Modify(index, item => item.ToggleVisibility());
         }
 
-        public Tuple<string, string> TryAddItemBySymbolName(string symbol) =>
+        public void TryAddItemBySymbolName(string symbol) =>
             SymbolInterpreter.TryAddItemBySymbolName(symbol);
     }
 }

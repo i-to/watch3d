@@ -39,9 +39,9 @@ namespace Watch3D.Test.Debuggee
             triangles.Add(triangle);
         }
 
-        List<Point> Convert(Point3DCollection positions) =>
+        public List<Point> Convert(Point3DCollection positions) =>
             positions.Select(Convert).ToList();
 
-        Point Convert(Point3D point) => new Point(point.X, point.Y, point.Z);
+        public Point Convert(Point3D point) => new Point(point.X, point.Y, point.Z);
     }
 }

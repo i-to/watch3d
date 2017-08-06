@@ -27,7 +27,7 @@ namespace Watch3D.Package
     public class ThePackage : Microsoft.VisualStudio.Shell.Package
     {
         CommandsRegistrar CommandsRegistrar;
-        ExpressionReader ExpressionReader;
+        ExpressionInterpreter ExpressionInterpreter;
         DebuggerState DebuggerState;
         SceneViewModel SceneViewModel;
         VisualizerService VisualizerService;
@@ -60,15 +60,19 @@ namespace Watch3D.Package
             var dte = this.GetService<DTE2, DTE>();
             var debugger = (Debugger5) dte.Debugger;
             var debugContext = new DteDebugContext(debugger);
-            var expressionFactory = new TestDebuggeeExpressionFactory();
-            ExpressionReader = new ExpressionReader(expressionFactory, debugContext);
+            var expressionFactory = new TestDebuggeeSymbols();
+            var debugContextInterpreter = new ExpressionEvaluator(debugContext);
+            var sceneItemsFactory = new SceneItemFactory();
+            ExpressionInterpreter = new ExpressionInterpreter(expressionFactory, debugContextInterpreter, sceneItemsFactory);
             DebuggerState = new DteDebuggerState(debugger);
             var sceneItems = new ObservableCollectionWithReplace<SceneItemViewModel>();
             var sceneItemCollectionAdapter = new SceneItemCollectionAdapter(sceneItems);
             SceneViewModel = new SceneViewModel(sceneItems, sceneItemCollectionAdapter);
-            SymbolInterpreter = new DebugSymbolInterpreter(ExpressionReader, DebuggerState, SceneViewModel);
-            ToolViewModel = new ToolViewModel(SceneViewModel, SymbolInterpreter);
-            VisualizerService = new WatchVisualizerService(SceneViewModel);
+            var visualizerAddItems = new AddGeometryToScene(SceneViewModel, sceneItemsFactory);
+            SymbolInterpreter = new DebugSymbolInterpreter(ExpressionInterpreter, DebuggerState, SceneViewModel);
+            var sceneInitializer = new SceneInitializer(sceneItemsFactory);
+            ToolViewModel = new ToolViewModel(SceneViewModel, SymbolInterpreter, sceneInitializer);
+            VisualizerService = new WatchVisualizerService(visualizerAddItems);
             CurrentSymbolProvider = new CurrentSymbolProvider(dte);
         }
 

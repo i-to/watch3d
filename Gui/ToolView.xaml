@@ -27,7 +27,6 @@
                 ZoomExtentsWhenLoaded="True"
                 ShowViewCube="True"
                 ShowCoordinateSystem="True"
-                Title="Empty"
                 ItemsSource="{Binding Path=Scene.SceneItemsViewportAdapter.Visuals}"
                 MinWidth="300"
                 >
@@ -67,7 +66,7 @@
             </Grid>
         </Grid>
         <DockPanel Grid.Row="1" LastChildFill="True">
-            <Label DockPanel.Dock="Left" Content="Mesh symbol name"></Label>
+            <Label DockPanel.Dock="Left" Content="Symbol:"/>
             <Button x:Name="AddButton" DockPanel.Dock="Right" Content="Add" Click="AddBySymbolName"/>
             <TextBox x:Name="MeshSymbol" Text="" MinWidth="100"/>
         </DockPanel>

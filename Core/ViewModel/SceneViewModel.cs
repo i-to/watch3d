@@ -4,7 +4,44 @@ using Watch3D.Core.Utility;
 
 namespace Watch3D.Core.ViewModel
 {
-    public class SceneViewModel : Scene
+    public class AddGeometryToScene : VisualizerAddGeometry
+    {
+        public readonly SceneViewModel Scene;
+        public readonly SceneItemFactory SceneItemFactory;
+
+        public AddGeometryToScene(SceneViewModel scene, SceneItemFactory sceneItemFactory)
+        {
+            Scene = scene;
+            SceneItemFactory = sceneItemFactory;
+        }
+
+        public void AddMesh(MeshGeometry3D mesh) =>
+            Scene.AddItem(SceneItemFactory.CreateMesh(mesh));
+
+        public void AddPolyline(Point3DCollection points) =>
+            Scene.AddItem(SceneItemFactory.CreatePolyline(points));
+
+        public void AddPoint(Point3D point) =>
+            Scene.AddItem(SceneItemFactory.CreatePoint(point));
+    }
+
+    public class SceneInitializer
+    {
+        public readonly SceneItemFactory SceneItemFactory;
+
+        public SceneInitializer(SceneItemFactory sceneItemFactory)
+        {
+            SceneItemFactory = sceneItemFactory;
+        }
+
+        public void InitializeScene(SceneViewModel scene)
+        {
+            scene.AddItem(SceneItemFactory.CreateLight());
+            scene.AddItem(SceneItemFactory.CreateGrid());
+        }
+    }
+
+    public class SceneViewModel
     {
         public ObservableCollectionWithReplace<SceneItemViewModel> SceneItems { get; }
         public SceneItemCollectionAdapter SceneItemsViewportAdapter { get; }
@@ -17,25 +54,6 @@ namespace Watch3D.Core.ViewModel
             SceneItemsViewportAdapter = sceneItemsViewportAdapter;
         }
 
-        public void InitializeScene()
-        {
-            SceneItems.Add(new LightSceneItemViewModel(new LightSceneItem()));
-            SceneItems.Add(new GridSceneItemViewModel(new GridSceneItem()));
-        }
-
-        public void AddMesh(MeshGeometry3D mesh) =>
-            SceneItems.Add(
-                new MeshSceneItemViewModel(
-                    new MeshSceneItem("Mesh", mesh)));
-
-        public void AddPolyline(Point3DCollection points) =>
-            SceneItems.Add(
-                new PolylineSceneItemViewModel(
-                    new PolylineSceneItem("Polyline", points)));
-
-        public void AddPoint(Point3D point) =>
-            SceneItems.Add(
-                new PointSceneItemViewModel(
-                    new PointSceneItem("Point", point)));
+        public void AddItem(SceneItemViewModel item) => SceneItems.Add(item);
     }
 }

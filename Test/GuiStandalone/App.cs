@@ -20,12 +20,15 @@ namespace Watch3D.Test.GuiStandalone
             Application = new Application();
             var sceneItems = new ObservableCollectionWithReplace<SceneItemViewModel>();
             var sceneItemCollectionAdapter = new SceneItemCollectionAdapter(sceneItems);
+            var sceneItemsFactory = new SceneItemFactory();
             var sceneViewModel = new SceneViewModel(sceneItems, sceneItemCollectionAdapter);
             var symbolInterpreter = new SymbolInterpreterStub();
-            var toolViewModel = new ToolViewModel(sceneViewModel, symbolInterpreter);
+            var sceneInitializer = new SceneInitializer(sceneItemsFactory);
+            var toolViewModel = new ToolViewModel(sceneViewModel, symbolInterpreter, sceneInitializer);
             var control = new ToolView(toolViewModel);
             Window = new Window {Content = control, Title = "Watch 3D standalone GUI test."};
-            AddTestModelsToScene(sceneViewModel);
+            var addGeometry = new AddGeometryToScene(sceneViewModel, sceneItemsFactory);
+            AddTestModelsToScene(addGeometry);
         }
 
         public void Run()
@@ -33,20 +36,20 @@ namespace Watch3D.Test.GuiStandalone
             Application.Run(Window);
         }
 
-        void AddTestModelsToScene(SceneViewModel sceneViewModel)
+        void AddTestModelsToScene(AddGeometryToScene add)
         {
-            AddModel(sceneViewModel, TestModelId.Bunny);
-            AddModel(sceneViewModel, TestModelId.Teapot);
-            sceneViewModel.AddPoint(TestGeometry.CreateTestPoint());
-            sceneViewModel.AddPolyline(TestGeometry.CreateTestPolyline());
+            AddModel(add, TestModelId.Bunny);
+            AddModel(add, TestModelId.Teapot);
+            add.AddPoint(TestGeometry.CreateTestPoint());
+            add.AddPolyline(TestGeometry.CreateTestPolyline());
         }
 
-        void AddModel(SceneViewModel scene, TestModelId id)
+        void AddModel(AddGeometryToScene add, TestModelId id)
         {
             var group = TestGeometry.LoadTestModel(id);
             var model = group.Children.First();
             var mesh = (MeshGeometry3D)((GeometryModel3D)model).Geometry;
-            scene.AddMesh(mesh);
+            add.AddMesh(mesh);
         }
     }
 }

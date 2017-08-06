@@ -2,7 +2,7 @@ using System.Windows.Media.Media3D;
 
 namespace Watch3D.Core.Model
 {
-    public interface Scene
+    public interface VisualizerAddGeometry
     {
         void AddMesh(MeshGeometry3D mesh);
         void AddPolyline(Point3DCollection points);

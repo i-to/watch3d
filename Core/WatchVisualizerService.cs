@@ -5,9 +5,9 @@ namespace Watch3D.Core
 {
     public class WatchVisualizerService : VisualizerService
     {
-        readonly Scene Scene;
+        readonly VisualizerAddGeometry Scene;
 
-        public WatchVisualizerService(Scene scene)
+        public WatchVisualizerService(VisualizerAddGeometry scene)
         {
             Scene = scene;
         }

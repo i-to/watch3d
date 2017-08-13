@@ -16,13 +16,13 @@ namespace Watch3D.Core.ViewModel
         }
 
         public void AddMesh(MeshGeometry3D mesh) =>
-            Scene.AddItem(SceneItemFactory.CreateMesh(mesh));
+            Scene.AddItem(SceneItemFactory.CreateMesh("mesh", mesh));
 
         public void AddPolyline(Point3DCollection points) =>
-            Scene.AddItem(SceneItemFactory.CreatePolyline(points));
+            Scene.AddItem(SceneItemFactory.CreatePolyline("polyline", points));
 
         public void AddPoint(Point3D point) =>
-            Scene.AddItem(SceneItemFactory.CreatePoint(point));
+            Scene.AddItem(SceneItemFactory.CreatePoint("point", point));
     }
 
     public class SceneInitializer

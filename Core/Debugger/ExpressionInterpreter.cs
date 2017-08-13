@@ -50,36 +50,20 @@ namespace Watch3D.Core.Debugger
                 case "mesh":
                     if (tokens.Length < 3)
                         throw new FormatException("Expected object in the following format: 'mesh|<vertex data>|<triangles data>'");
-                    return ParseMesh(tokens[1], tokens[2]);
+                    var mesh = new MeshGeometry3D
+                    {
+                        Positions = Parser.ParsePoint3DCollection(tokens[1]),
+                        TriangleIndices = Parser.ParseInt32Collection(tokens[2])
+                    };
+                    return SceneItemFactory.CreateMesh(symbol, mesh);
                 case "polyline":
-                    return ParsePolyline(tokens[1]);
+                    var polyline = Parser.ParsePoint3DCollection(tokens[1]);
+                    return SceneItemFactory.CreatePolyline(symbol, polyline);
                 case "point":
-                    return ParsePoint(tokens[1]);
+                    var point = Parser.ParsePoint3D(tokens[1]);
+                    return SceneItemFactory.CreatePoint(symbol, point);
             }
             throw new EvaluationFailedException($"Unknown object type: {objectType}");
-        }
-
-        MeshSceneItemViewModel ParseMesh(string vertices, string triangles)
-        {
-            var mesh = new MeshGeometry3D
-            {
-                Positions = Parser.ParsePoint3DCollection(vertices),
-                TriangleIndices = Parser.ParseInt32Collection(triangles)
-            };
-            var meshSceneItemViewModel = SceneItemFactory.CreateMesh(mesh);
-            return meshSceneItemViewModel;
-        }
-
-        PolylineSceneItemViewModel ParsePolyline(string data)
-        {
-            var polyline = Parser.ParsePoint3DCollection(data);
-            return SceneItemFactory.CreatePolyline(polyline);
-        }
-
-        PointSceneItemViewModel ParsePoint(string data)
-        {
-            var point = Parser.ParsePoint3D(data);
-            return SceneItemFactory.CreatePoint(point);
         }
     }
 }

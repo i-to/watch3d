@@ -21,5 +21,7 @@
         <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=Name, Mode=OneWay}" />
         <TextBlock Grid.Row="1" Grid.Column="0">Color</TextBlock>
         <xctk:ColorPicker Grid.Row="1" Grid.Column="1" SelectedColor="{Binding Path=Color}"/>
+        <TextBlock Grid.Row="2" Grid.Column="0">Diameter</TextBlock>
+        <Slider Grid.Row="2" Grid.Column="1" Minimum="0.001" Maximum="0.5" Value="{Binding Path=Diameter, Mode=TwoWay}"/>
     </Grid>
 </UserControl>

@@ -31,5 +31,11 @@ namespace Watch3D.Core.Model
             get { return SurfaceBrush.Color; }
             set { SurfaceBrush = new SolidColorBrush(value); }
         }
+
+        public double Diameter
+        {
+            get { return TubeVisual.Diameter; }
+            set { TubeVisual.Diameter = value; }
+        }
     }
 }

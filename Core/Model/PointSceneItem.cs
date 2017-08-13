@@ -31,5 +31,11 @@ namespace Watch3D.Core.Model
             get { return SurfaceBrush.Color; }
             set { SurfaceBrush = new SolidColorBrush(value); }
         }
+
+        public double Radius
+        {
+            get { return SphereVisual.Radius; }
+            set { SphereVisual.Radius = value; }
+        }
     }
 }

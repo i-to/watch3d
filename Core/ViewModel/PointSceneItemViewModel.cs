@@ -19,11 +19,23 @@ namespace Watch3D.Core.ViewModel
             get { return Model.SurfaceColor; }
             set
             {
-                RaiseColorChanged();
                 Model.SurfaceColor = value;
+                RaiseColorChanged();
             }
         }
         public event EventHandler ColorChanged;
         void RaiseColorChanged() => ColorChanged?.Invoke(this, EventArgs.Empty);
+
+        public double Radius
+        {
+            get { return Model.Radius; }
+            set
+            {
+                Model.Radius = value;
+                RaiseRadiusChanged();
+            }
+        }
+        public event EventHandler RadiusChanged;
+        void RaiseRadiusChanged() => RadiusChanged?.Invoke(this, EventArgs.Empty);
     }
 }

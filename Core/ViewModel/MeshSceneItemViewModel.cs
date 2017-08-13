@@ -19,8 +19,8 @@ namespace Watch3D.Core.ViewModel
             get { return Model.FrontSurfaceColor; }
             set
             {
-                RaiseFrontSurfaceColorChanged();
                 Model.FrontSurfaceColor = value;
+                RaiseFrontSurfaceColorChanged();
             }
         }
         public event EventHandler FrontSurfaceColorChanged;
@@ -31,8 +31,8 @@ namespace Watch3D.Core.ViewModel
             get { return Model.BackSurfaceColor; }
             set
             {
-                RaiseBackSurfaceColorChanged();
                 Model.BackSurfaceColor = value;
+                RaiseBackSurfaceColorChanged();
             }
         }
         public event EventHandler BackSurfaceColorChanged;

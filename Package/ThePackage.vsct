@@ -2,21 +2,21 @@
 <CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable"
               xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-  <!-- Defines the IDs for all the commands exposed by Visual Studio. -->
   <Extern href="stdidcmd.h"/>
-
-  <!-- Contains the command ids for the menus provided by the shell. -->
   <Extern href="vsshlids.h"/>
+  <Extern href="vsdbgcmd.h" />
+  <Extern href="vsdebugguids.h" />
 
   <Commands package="guidThePackage">
     <Buttons>
       <Button guid="Watch3DCommandSet" id="ShowToolWindowCommandId" priority="0x0100" type="Button">
-        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1"/>
+        <Parent guid="guidVSDebugGroup" id="IDG_DEBUG_WINDOWS_GENERAL"/>
         <Icon guid="guidImages" id="bmpPicSearch" />
         <Strings>
           <ButtonText>Watch 3D</ButtonText>
         </Strings>
       </Button>
+      
       <Button guid="Watch3DCommandSet" id="AddSymbolFromEditorCommandId" priority="0x0100" type="Button">
         <Parent guid="guidSHLMainMenu" id="IDG_VS_CODEWIN_DEBUG_WATCH"/>
         <Icon guid="guidImages" id="bmpPicSearch" />

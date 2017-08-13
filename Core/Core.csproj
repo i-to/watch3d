@@ -53,8 +53,8 @@
     <Compile Include="Debugger\DebugContext.cs" />
     <Compile Include="Debugger\ExpressionEvaluator.cs" />
     <Compile Include="Debugger\DebuggerState.cs" />
-    <Compile Include="Debugger\DebuggeeSymbols.cs" />
     <Compile Include="Debugger\ExpressionInterpreter.cs" />
+    <Compile Include="Debugger\InteropParser.cs" />
     <Compile Include="InteropConverter.cs" />
     <Compile Include="Model\GridSceneItem.cs" />
     <Compile Include="Model\LightSceneItem.cs" />

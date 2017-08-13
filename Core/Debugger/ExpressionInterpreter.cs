@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using Watch3D.Core.Utility;
 using Watch3D.Core.ViewModel;
@@ -8,39 +7,25 @@ namespace Watch3D.Core.Debugger
 {
     public class ExpressionInterpreter
     {
-        readonly DebuggeeSymbols DebuggeeSymbols;
         readonly ExpressionEvaluator ExpressionEvaluator;
         readonly SceneItemFactory SceneItemFactory;
+        readonly InteropParser Parser;
 
         public ExpressionInterpreter(
-            DebuggeeSymbols debuggeeSymbols,
             ExpressionEvaluator expressionEvaluator,
-            SceneItemFactory sceneItemFactory)
+            SceneItemFactory sceneItemFactory,
+            InteropParser parser)
         {
-            DebuggeeSymbols = debuggeeSymbols;
             ExpressionEvaluator = expressionEvaluator;
             SceneItemFactory = sceneItemFactory;
+            Parser = parser;
         }
 
         public SceneItemViewModel TryInterpretSymbol(string symbol)
         {
             try
             {
-                var type = ExpressionEvaluator.EvaluateSymbolType(symbol);
-                var objectType = DebuggeeSymbols.MapObjectType(type);
-                switch (objectType)
-                {
-                    case DebuggeeObjectType.Mesh:
-                        var mesh = ReadMesh(symbol);
-                        return SceneItemFactory.CreateMesh(mesh);
-                    case DebuggeeObjectType.Polyline:
-                        var polyline = ReadPolyline(symbol);
-                        return SceneItemFactory.CreatePolyline(polyline);
-                    case DebuggeeObjectType.Point:
-                        var point = ReadPoint(symbol);
-                        return SceneItemFactory.CreatePoint(point);
-                }
-                throw new EvaluationFailedException($"Unknown object type: {objectType}");
+                return InterpretSymbol(symbol);
             }
             catch (Exception exception)
             when (exception is FormatException
@@ -51,39 +36,50 @@ namespace Watch3D.Core.Debugger
             }
         }
 
-        Point3D ReadPoint(string symbol)
+        SceneItemViewModel InterpretSymbol(string symbol)
         {
-            var expression = DebuggeeSymbols.CreatePointExpression(symbol);
+            var expression = $"DebuggerInterop.EvaluateObject({symbol})";
             var evaluationResult = ExpressionEvaluator.EvaluateExpressionWithStringReturnType(expression);
-            return evaluationResult.ParsePoint3D();
-        }
-
-        Point3DCollection ReadPolyline(string symbol)
-        {
-            var expression = DebuggeeSymbols.CreatePolylinePointsExpression(symbol);
-            var evaluationResult = ExpressionEvaluator.EvaluateExpressionWithStringReturnType(expression);
-            return evaluationResult.ParsePoint3DCollection();
-        }
-
-        MeshGeometry3D ReadMesh(string meshSymbol) =>
-            new MeshGeometry3D
+            var tokens = evaluationResult.Split('|');
+            if (tokens.Length < 2)
+                throw new FormatException(
+                    "Expected object in the following format: '<type>|<object data>|<optional data>|...'");
+            var objectType = tokens[0];
+            switch (objectType)
             {
-                Positions = ReadVertices(meshSymbol),
-                TriangleIndices = ReadTriangles(meshSymbol)
-            };
-
-        Point3DCollection ReadVertices(string meshSymbol)
-        {
-            var expression = DebuggeeSymbols.CreateMeshVerticesExpression(meshSymbol);
-            var evaluationResult = ExpressionEvaluator.EvaluateExpressionWithStringReturnType(expression);
-            return evaluationResult.ParsePoint3DCollection();
+                case "mesh":
+                    if (tokens.Length < 3)
+                        throw new FormatException("Expected object in the following format: 'mesh|<vertex data>|<triangles data>'");
+                    return ParseMesh(tokens[1], tokens[2]);
+                case "polyline":
+                    return ParsePolyline(tokens[1]);
+                case "point":
+                    return ParsePoint(tokens[1]);
+            }
+            throw new EvaluationFailedException($"Unknown object type: {objectType}");
         }
 
-        Int32Collection ReadTriangles(string meshSymbol)
+        MeshSceneItemViewModel ParseMesh(string vertices, string triangles)
         {
-            var expression = DebuggeeSymbols.CreateMeshIndicesExpression(meshSymbol);
-            var evaluationResult = ExpressionEvaluator.EvaluateExpressionWithStringReturnType(expression);
-            return evaluationResult.ParseInt32Collection();
+            var mesh = new MeshGeometry3D
+            {
+                Positions = Parser.ParsePoint3DCollection(vertices),
+                TriangleIndices = Parser.ParseInt32Collection(triangles)
+            };
+            var meshSceneItemViewModel = SceneItemFactory.CreateMesh(mesh);
+            return meshSceneItemViewModel;
+        }
+
+        PolylineSceneItemViewModel ParsePolyline(string data)
+        {
+            var polyline = Parser.ParsePoint3DCollection(data);
+            return SceneItemFactory.CreatePolyline(polyline);
+        }
+
+        PointSceneItemViewModel ParsePoint(string data)
+        {
+            var point = Parser.ParsePoint3D(data);
+            return SceneItemFactory.CreatePoint(point);
         }
     }
 }

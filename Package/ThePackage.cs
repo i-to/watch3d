@@ -60,10 +60,10 @@ namespace Watch3D.Package
             var dte = this.GetService<DTE2, DTE>();
             var debugger = (Debugger5) dte.Debugger;
             var debugContext = new DteDebugContext(debugger);
-            var expressionFactory = new TestDebuggeeSymbols();
-            var debugContextInterpreter = new ExpressionEvaluator(debugContext);
+            var expressionEvaluator = new ExpressionEvaluator(debugContext);
             var sceneItemsFactory = new SceneItemFactory();
-            ExpressionInterpreter = new ExpressionInterpreter(expressionFactory, debugContextInterpreter, sceneItemsFactory);
+            var interopParser = new InteropParser();
+            ExpressionInterpreter = new ExpressionInterpreter(expressionEvaluator, sceneItemsFactory, interopParser);
             DebuggerState = new DteDebuggerState(debugger);
             var sceneItems = new ObservableCollectionWithReplace<SceneItemViewModel>();
             var sceneItemCollectionAdapter = new SceneItemCollectionAdapter(sceneItems);

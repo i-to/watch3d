@@ -58,7 +58,7 @@
     <Compile Include="Mesh.cs" />
     <Compile Include="MeshConverter.cs" />
     <Compile Include="MeshGenerator.cs" />
-    <Compile Include="DebugInteropStringBuilder.cs" />
+    <Compile Include="DebuggerInterop.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Polyline.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

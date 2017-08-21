@@ -26,16 +26,40 @@ namespace Watch3D.Core.ViewModel
         public event EventHandler ColorChanged;
         void RaiseColorChanged() => ColorChanged?.Invoke(this, EventArgs.Empty);
 
-        public double Diameter
+        public double TubeDiameter
         {
-            get { return Model.Diameter; }
+            get { return Model.TubeDiameter; }
             set
             {
-                Model.Diameter = value;
-                RaiseDiameterChanged();
+                Model.TubeDiameter = value;
+                RaiseTubeDiameterChanged();
             }
         }
-        public event EventHandler DiameterChanged;
-        void RaiseDiameterChanged() => DiameterChanged?.Invoke(this, EventArgs.Empty);
+        public event EventHandler TubeDiameterChanged;
+        void RaiseTubeDiameterChanged() => TubeDiameterChanged?.Invoke(this, EventArgs.Empty);
+
+        public bool TubeEnabled
+        {
+            get { return Model.TubeVisualEnabled; }
+            set
+            {
+                Model.TubeVisualEnabled = value;
+                RaiseTubeEnabledChanged();
+            }
+        }
+        public event EventHandler TubeEnabledChanged;
+        void RaiseTubeEnabledChanged() => TubeEnabledChanged?.Invoke(this, EventArgs.Empty);
+
+        public bool PointsEnabled
+        {
+            get { return Model.PointVisualsEnabled; }
+            set
+            {
+                Model.PointVisualsEnabled = value;
+                RaisePointsEnabledChanged();
+            }
+        }
+        public event EventHandler PointsEnabledChanged;
+        void RaisePointsEnabledChanged() => PointsEnabledChanged?.Invoke(this, EventArgs.Empty);
     }
 }

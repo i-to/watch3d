@@ -16,12 +16,18 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0">Point</TextBlock>
         <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=Name, Mode=OneWay}" />
         <TextBlock Grid.Row="1" Grid.Column="0">Color</TextBlock>
         <xctk:ColorPicker Grid.Row="1" Grid.Column="1" SelectedColor="{Binding Path=Color}"/>
-        <TextBlock Grid.Row="2" Grid.Column="0">Diameter</TextBlock>
-        <Slider Grid.Row="2" Grid.Column="1" Minimum="0.001" Maximum="0.5" Value="{Binding Path=Diameter, Mode=TwoWay}"/>
+        <TextBlock Grid.Row="2" Grid.Column="0">Tube Enabled</TextBlock>
+        <CheckBox Grid.Row="2" Grid.Column="1" IsChecked="{Binding Path=TubeEnabled}"></CheckBox>
+        <TextBlock Grid.Row="3" Grid.Column="0">Points Enabled</TextBlock>
+        <CheckBox Grid.Row="3" Grid.Column="1" IsChecked="{Binding Path=PointsEnabled}"></CheckBox>
+        <TextBlock Grid.Row="4" Grid.Column="0">Tube Diameter</TextBlock>
+        <Slider Grid.Row="4" Grid.Column="1" Minimum="0.001" Maximum="0.5" Value="{Binding Path=TubeDiameter, Mode=TwoWay}"/>
     </Grid>
 </UserControl>

@@ -27,7 +27,7 @@
         <CheckBox Grid.Row="2" Grid.Column="1" IsChecked="{Binding Path=TubeEnabled}"></CheckBox>
         <TextBlock Grid.Row="3" Grid.Column="0">Points Enabled</TextBlock>
         <CheckBox Grid.Row="3" Grid.Column="1" IsChecked="{Binding Path=PointsEnabled}"></CheckBox>
-        <TextBlock Grid.Row="4" Grid.Column="0">Tube Diameter</TextBlock>
-        <Slider Grid.Row="4" Grid.Column="1" Minimum="0.001" Maximum="0.5" Value="{Binding Path=TubeDiameter, Mode=TwoWay}"/>
+        <TextBlock Grid.Row="4" Grid.Column="0">Diameter</TextBlock>
+        <Slider Grid.Row="4" Grid.Column="1" Minimum="0.001" Maximum="0.5" Value="{Binding Path=Diameter, Mode=TwoWay}"/>
     </Grid>
 </UserControl>

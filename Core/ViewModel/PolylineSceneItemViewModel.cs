@@ -26,17 +26,17 @@ namespace Watch3D.Core.ViewModel
         public event EventHandler ColorChanged;
         void RaiseColorChanged() => ColorChanged?.Invoke(this, EventArgs.Empty);
 
-        public double TubeDiameter
+        public double Diameter
         {
-            get { return Model.TubeDiameter; }
+            get { return Model.Diameter; }
             set
             {
-                Model.TubeDiameter = value;
-                RaiseTubeDiameterChanged();
+                Model.Diameter = value;
+                RaiseDiameterChanged();
             }
         }
-        public event EventHandler TubeDiameterChanged;
-        void RaiseTubeDiameterChanged() => TubeDiameterChanged?.Invoke(this, EventArgs.Empty);
+        public event EventHandler DiameterChanged;
+        void RaiseDiameterChanged() => DiameterChanged?.Invoke(this, EventArgs.Empty);
 
         public bool TubeEnabled
         {

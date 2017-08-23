@@ -63,10 +63,14 @@ namespace Watch3D.Core.Model
             set { SurfaceBrush = new SolidColorBrush(value); }
         }
 
-        public double TubeDiameter
+        public double Diameter
         {
             get { return TubeVisual.Diameter; }
-            set { TubeVisual.Diameter = value; }
+            set
+            {
+                TubeVisual.Diameter = value;
+                PointVisuals.ForEach(point => point.Radius = value);
+            }
         }
     }
 }

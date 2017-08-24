@@ -12,7 +12,8 @@ namespace Watch3D.Gui
                 new InputGestureCollection { new KeyGesture(Key.Space) });
 
         public static readonly RoutedCommand StartEditingListItemByKeyGesture =
-            new RoutedCommand(
+            new RoutedUICommand(
+                "Rename",
                 nameof(StartEditingListItemByKeyGesture),
                 typeof(UICommands),
                 new InputGestureCollection { new KeyGesture(Key.F2) });

@@ -10,6 +10,17 @@
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="500"
              Name="This">
+    <UserControl.Resources>
+        <ContextMenu x:Key="SceneItemsListItemPropertiesContextMenu">
+            <MenuItem Command="local:UICommands.StartEditingListItemByKeyGesture"/>
+            <MenuItem Command="local:UICommands.ToggleShowHide"/>
+            <Separator/>
+            <MenuItem Command="ApplicationCommands.Delete"/>
+        </ContextMenu>
+        <Style x:Key="SceneItemListItemContextMenuStyle" TargetType="{x:Type ListBoxItem}">
+            <Setter Property="ContextMenu" Value="{StaticResource SceneItemsListItemPropertiesContextMenu}" />
+        </Style>
+    </UserControl.Resources>
     <Grid DataContext="{Binding ElementName=This, Path=ViewModel}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -45,6 +56,7 @@
                     Grid.Row="0" 
                     Name="SceneItemsList"
                     ItemsSource="{Binding Path=Scene.SceneItems}"
+                    ItemContainerStyle="{StaticResource SceneItemListItemContextMenuStyle}"
                     SelectionMode="Extended">
                     <ListBox.CommandBindings>
                         <CommandBinding Command="ApplicationCommands.Delete" Executed="ExecuteDelete" />

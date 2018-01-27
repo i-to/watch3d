@@ -1,4 +1,5 @@
-﻿using Watch3D.Gui;
+﻿using Watch3D.Core.Model;
+using Watch3D.Gui;
 
 namespace Watch3D.Test.GuiStandalone
 {

@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Windows;
 using System.Windows.Media.Media3D;
+using Watch3D.Core.Model;
 using Watch3D.Core.Utility;
 using Watch3D.Core.ViewModel;
 using Watch3D.Gui;
@@ -24,7 +25,8 @@ namespace Watch3D.Test.GuiStandalone
             var sceneViewModel = new SceneViewModel(sceneItems, sceneItemCollectionAdapter);
             var symbolInterpreter = new SymbolInterpreterStub();
             var sceneInitializer = new SceneInitializer(sceneItemsFactory);
-            var toolViewModel = new ToolViewModel(sceneViewModel, symbolInterpreter, sceneInitializer);
+            var exporter = new Exporter();
+            var toolViewModel = new ToolViewModel(sceneViewModel, symbolInterpreter, sceneInitializer, exporter);
             var control = new ToolView(toolViewModel);
             Window = new Window {Content = control, Title = "Watch 3D standalone GUI test."};
             var addGeometry = new AddGeometryToScene(sceneViewModel, sceneItemsFactory);

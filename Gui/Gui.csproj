@@ -71,11 +71,9 @@
     <Compile Include="SceneItemPropertiesView.xaml.cs">
       <DependentUpon>SceneItemPropertiesView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SymbolInterpreter.cs" />
     <Compile Include="ToolView.xaml.cs">
       <DependentUpon>ToolView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ToolViewModel.cs" />
     <Compile Include="UICommands.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,5 @@
 using Watch3D.Core.Debugger;
+using Watch3D.Core.Model;
 using Watch3D.Core.ViewModel;
 using Watch3D.Gui;
 

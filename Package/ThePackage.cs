@@ -71,7 +71,8 @@ namespace Watch3D.Package
             var visualizerAddItems = new AddGeometryToScene(SceneViewModel, sceneItemsFactory);
             SymbolInterpreter = new DebugSymbolInterpreter(ExpressionInterpreter, DebuggerState, SceneViewModel);
             var sceneInitializer = new SceneInitializer(sceneItemsFactory);
-            ToolViewModel = new ToolViewModel(SceneViewModel, SymbolInterpreter, sceneInitializer);
+            var exporter = new Exporter();
+            ToolViewModel = new ToolViewModel(SceneViewModel, SymbolInterpreter, sceneInitializer, exporter);
             VisualizerService = new WatchVisualizerService(visualizerAddItems);
             CurrentSymbolProvider = new CurrentSymbolProvider(dte);
         }

@@ -12,7 +12,7 @@ namespace Watch3D.Core.ViewModel
             Model = model;
         }
 
-        protected SceneItem Model { get; }
+        public SceneItem Model { get; }
 
         public Visual3D Visual => Model.Visual;
         public string Name

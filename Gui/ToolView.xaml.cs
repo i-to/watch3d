@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Watch3D.Core.ViewModel;
 
 namespace Watch3D.Gui
 {
@@ -33,6 +34,12 @@ namespace Watch3D.Gui
         {
             var listBoxItem = e.GetSource<ListBox>().GetFocusedItemContainer();
             EditableTextBox.FindInParent(listBoxItem).StartEditing();
+        }
+
+        void ExecuteExportSTL(object sender, ExecutedRoutedEventArgs e)
+        {
+            var index = e.GetSource<ListBox>().GetFocusedItemIndex();
+            ViewModel.ExportSTL(index);
         }
 
         void AddBySymbolName(object sender, RoutedEventArgs e) =>

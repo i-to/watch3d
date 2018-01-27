@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Controls;
 using Watch3D.Core.Utility;
@@ -14,12 +15,23 @@ namespace Watch3D.Gui
                 .Select(o => listBox.Items.IndexOf(o))
                 .ToArray();
 
-        public static ListBoxItem GetFocusedItemContainer(this ListBox listBox) =>
+        public static IEnumerable<ListBoxItem> GetItemContainers(this ListBox listBox) =>
             listBox
                 .Items
                 .Cast<object>()
-                .Select(obj => (ListBoxItem)listBox.ItemContainerGenerator.ContainerFromItem(obj))
+                .Select(obj => (ListBoxItem) listBox.ItemContainerGenerator.ContainerFromItem(obj));
+
+        public static ListBoxItem GetFocusedItemContainer(this ListBox listBox) =>
+            listBox
+                .GetItemContainers()
                 .FirstOrDefault(item => item.IsFocused);
+
+        public static int GetFocusedItemIndex(this ListBox listBox) =>
+            listBox
+                .GetItemContainers()
+                .Select(Tuple.Create<ListBoxItem, int>)
+                .First(tuple => tuple.Item1.IsFocused)
+                .Item2;
 
         public static void ResetSelection(this ListBox listBox, IReadOnlyList<int> selectedIndices)
         {

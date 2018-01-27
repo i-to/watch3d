@@ -24,5 +24,11 @@ namespace Watch3D.Gui
                 nameof(StartEditingListItemByMouseGesture),
                 typeof(UICommands),
                 new InputGestureCollection { new MouseGesture(MouseAction.LeftDoubleClick) });
+
+        public static readonly RoutedUICommand ExportSTL =
+            new RoutedUICommand(
+                "Export STL ...",
+                nameof(ExportSTL),
+                typeof(UICommands));
     }
 }

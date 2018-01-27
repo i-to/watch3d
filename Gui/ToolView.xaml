@@ -15,6 +15,8 @@
             <MenuItem Command="local:UICommands.StartEditingListItemByKeyGesture"/>
             <MenuItem Command="local:UICommands.ToggleShowHide"/>
             <Separator/>
+            <MenuItem Command="local:UICommands.ExportSTL"/>
+            <Separator/>
             <MenuItem Command="ApplicationCommands.Delete"/>
         </ContextMenu>
         <Style x:Key="SceneItemListItemContextMenuStyle" TargetType="{x:Type ListBoxItem}">
@@ -62,6 +64,7 @@
                         <CommandBinding Command="ApplicationCommands.Delete" Executed="ExecuteDelete" />
                         <CommandBinding Command="local:UICommands.ToggleShowHide" Executed="ExecuteToggleShowHide"/>
                         <CommandBinding Command="local:UICommands.StartEditingListItemByKeyGesture" Executed="ExecuteStartEditing"/>
+                        <CommandBinding Command="local:UICommands.ExportSTL" Executed="ExecuteExportSTL"/>
                     </ListBox.CommandBindings>
                     <ListBox.ItemTemplate>
                         <DataTemplate>

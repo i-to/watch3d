@@ -54,6 +54,10 @@ namespace Watch3D.Core.ViewModel
             SceneItemsViewportAdapter = sceneItemsViewportAdapter;
         }
 
-        public void AddItem(SceneItemViewModel item) => SceneItems.Add(item);
+        public void AddItem(SceneItemViewModel item) =>
+            SceneItems.Add(item);
+
+        public SceneItemViewModel GetItem(int index) =>
+            SceneItems[index];
     }
 }

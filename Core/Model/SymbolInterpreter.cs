@@ -1,4 +1,4 @@
-namespace Watch3D.Gui
+namespace Watch3D.Core.Model
 {
     public interface SymbolInterpreter
     {

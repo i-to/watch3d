@@ -54,6 +54,7 @@
     <Compile Include="Debugger\DteDebugContext.cs" />
     <Compile Include="Debugger\DteDebuggerState.cs" />
     <Compile Include="CommandsRegistrar.cs" />
+    <Compile Include="OutputWindowLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceProviderExtensions.cs" />
     <Compile Include="ThePackage.cs" />

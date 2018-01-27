@@ -26,6 +26,7 @@ namespace Watch3D.Package
     [ProvideService(typeof(VisualizerService))]
     public class ThePackage : Microsoft.VisualStudio.Shell.Package
     {
+        Logger Logger;
         CommandsRegistrar CommandsRegistrar;
         ExpressionInterpreter ExpressionInterpreter;
         DebuggerState DebuggerState;
@@ -51,6 +52,8 @@ namespace Watch3D.Package
         protected override void Initialize()
         {
             base.Initialize();
+            var outputWindowService = this.GetService<IVsOutputWindow, SVsOutputWindow>();
+            Logger = new OutputWindowLogger(outputWindowService);
             var commandService = this.GetService<IMenuCommandService>();
             CommandsRegistrar = new CommandsRegistrar(commandService);
             CommandsRegistrar.RegisterCommand(
@@ -63,7 +66,7 @@ namespace Watch3D.Package
             var expressionEvaluator = new ExpressionEvaluator(debugContext);
             var sceneItemsFactory = new SceneItemFactory();
             var interopParser = new InteropParser();
-            ExpressionInterpreter = new ExpressionInterpreter(expressionEvaluator, sceneItemsFactory, interopParser);
+            ExpressionInterpreter = new ExpressionInterpreter(Logger, expressionEvaluator, sceneItemsFactory, interopParser);
             DebuggerState = new DteDebuggerState(debugger);
             var sceneItems = new ObservableCollectionWithReplace<SceneItemViewModel>();
             var sceneItemCollectionAdapter = new SceneItemCollectionAdapter(sceneItems);
@@ -71,7 +74,7 @@ namespace Watch3D.Package
             var visualizerAddItems = new AddGeometryToScene(SceneViewModel, sceneItemsFactory);
             SymbolInterpreter = new DebugSymbolInterpreter(ExpressionInterpreter, DebuggerState, SceneViewModel);
             var sceneInitializer = new SceneInitializer(sceneItemsFactory);
-            var exporter = new Exporter();
+            var exporter = new Exporter(Logger);
             ToolViewModel = new ToolViewModel(SceneViewModel, SymbolInterpreter, sceneInitializer, exporter);
             VisualizerService = new WatchVisualizerService(visualizerAddItems);
             CurrentSymbolProvider = new CurrentSymbolProvider(dte);

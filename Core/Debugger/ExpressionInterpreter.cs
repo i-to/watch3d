@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Windows.Media.Media3D;
-using Watch3D.Core.Utility;
+using Watch3D.Core.Model;
 using Watch3D.Core.ViewModel;
 
 namespace Watch3D.Core.Debugger
 {
     public class ExpressionInterpreter
     {
+        readonly Logger Logger;
         readonly ExpressionEvaluator ExpressionEvaluator;
         readonly SceneItemFactory SceneItemFactory;
         readonly InteropParser Parser;
 
         public ExpressionInterpreter(
+            Logger logger,
             ExpressionEvaluator expressionEvaluator,
             SceneItemFactory sceneItemFactory,
             InteropParser parser)
@@ -19,6 +21,7 @@ namespace Watch3D.Core.Debugger
             ExpressionEvaluator = expressionEvaluator;
             SceneItemFactory = sceneItemFactory;
             Parser = parser;
+            Logger = logger;
         }
 
         public SceneItemViewModel TryInterpretSymbol(string symbol)
@@ -32,6 +35,7 @@ namespace Watch3D.Core.Debugger
                || exception is OverflowException
                || exception is EvaluationFailedException)
             {
+                Logger.Error($"Failed to interpret symbol: '{symbol}'.\nError details: '{exception}'.");
                 return null;
             }
         }

@@ -9,6 +9,12 @@ namespace Watch3D.Core.Model
     public class Exporter
     {
         readonly string DialogFilterSTL = "STL file (*.stl)|*.stl";
+        readonly Logger Logger;
+
+        public Exporter(Logger logger)
+        {
+            Logger = logger;
+        }
 
         public void Export(SceneItem item)
         {
@@ -35,7 +41,7 @@ namespace Watch3D.Core.Model
                || exception is IOException
                || exception is NotSupportedException)
             {
-                // TODO: error reporting
+                Logger.Error($"Failed to export file to path: ${fullName}.\nError details: '{exception}'.");
             }
         }
 

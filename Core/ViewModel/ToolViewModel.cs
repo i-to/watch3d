@@ -38,10 +38,16 @@ namespace Watch3D.Core.ViewModel
         public void TryAddItemBySymbolName(string symbol) =>
             SymbolInterpreter.TryAddItemBySymbolName(symbol);
 
+        public void Export(int sceneItemIndex)
+        {
+            var item = Scene.GetItem(sceneItemIndex);
+            Exporter.TryExport(item.Model);
+        }
+
         public void ExportSTL(int sceneItemIndex)
         {
             var item = Scene.GetItem(sceneItemIndex);
-            Exporter.Export(item.Model);
+            Exporter.TryExportSTL(item.Model);
         }
     }
 }

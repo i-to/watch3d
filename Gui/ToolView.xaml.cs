@@ -36,6 +36,12 @@ namespace Watch3D.Gui
             EditableTextBox.FindInParent(listBoxItem).StartEditing();
         }
 
+        void ExecuteExport(object sender, ExecutedRoutedEventArgs e)
+        {
+            var index = e.GetSource<ListBox>().GetFocusedItemIndex();
+            ViewModel.Export(index);
+        }
+
         void ExecuteExportSTL(object sender, ExecutedRoutedEventArgs e)
         {
             var index = e.GetSource<ListBox>().GetFocusedItemIndex();

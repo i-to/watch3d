@@ -26,7 +26,9 @@ namespace Watch3D.Test.GuiStandalone
             var symbolInterpreter = new SymbolInterpreterStub();
             var sceneInitializer = new SceneInitializer(sceneItemsFactory);
             var logger = new LoggerDebugOutput();
-            var exporter = new Exporter(logger);
+            var stlWriter = new VisualSTLStreamWriter();
+            var debugInteropWriter = new DebugInteropStreamWriter();
+            var exporter = new Exporter(logger, stlWriter, debugInteropWriter);
             var toolViewModel = new ToolViewModel(sceneViewModel, symbolInterpreter, sceneInitializer, exporter);
             var control = new ToolView(toolViewModel);
             Window = new Window {Content = control, Title = "Watch 3D standalone GUI test."};

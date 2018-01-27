@@ -28,11 +28,11 @@ namespace Watch3D.Package
     {
         Logger Logger;
         CommandsRegistrar CommandsRegistrar;
-        ExpressionInterpreter ExpressionInterpreter;
+        SymbolInterpreter SymbolInterpreter;
         DebuggerState DebuggerState;
         SceneViewModel SceneViewModel;
         VisualizerService VisualizerService;
-        DebugSymbolInterpreter SymbolInterpreter;
+        CommandInterpreter CommandInterpreter;
         CurrentSymbolProvider CurrentSymbolProvider;
         ToolViewModel ToolViewModel;
 
@@ -59,25 +59,28 @@ namespace Watch3D.Package
             CommandsRegistrar.RegisterCommand(
                 CommandIds.Watch3DCommandSet, CommandIds.ShowToolWindowCommandId, ExecuteShowToolWindow);
             CommandsRegistrar.RegisterCommand(
-                CommandIds.Watch3DCommandSet, CommandIds.AddSymbolFromEditorCommandId, ExecuteAddSymbolFromEditor);
+                CommandIds.Watch3DCommandSet, CommandIds.AddSymbolFromEditorCommandId, ExecuteCommandFromEditor);
             var dte = this.GetService<DTE2, DTE>();
             var debugger = (Debugger5) dte.Debugger;
             var debugContext = new DteDebugContext(debugger);
             var expressionEvaluator = new ExpressionEvaluator(debugContext);
             var sceneItemsFactory = new SceneItemFactory();
             var interopParser = new InteropParser();
-            ExpressionInterpreter = new ExpressionInterpreter(Logger, expressionEvaluator, sceneItemsFactory, interopParser);
+            var sceneItemDeserializer = new SceneItemDeserializer(interopParser, sceneItemsFactory);
+            SymbolInterpreter = new DebuggeeSymbolInterpreter(Logger, expressionEvaluator, sceneItemDeserializer);
             DebuggerState = new DteDebuggerState(debugger);
             var sceneItems = new ObservableCollectionWithReplace<SceneItemViewModel>();
             var sceneItemCollectionAdapter = new SceneItemCollectionAdapter(sceneItems);
             SceneViewModel = new SceneViewModel(sceneItems, sceneItemCollectionAdapter);
             var visualizerAddItems = new AddGeometryToScene(SceneViewModel, sceneItemsFactory);
-            SymbolInterpreter = new DebugSymbolInterpreter(ExpressionInterpreter, DebuggerState, SceneViewModel);
+            var addSceneItemFromLiteralCommand =
+                new AddSceneItemFromLiteralCommand(Logger, SceneViewModel, sceneItemDeserializer);
+            CommandInterpreter = new CommandInterpreter(Logger, SceneViewModel, DebuggerState, addSceneItemFromLiteralCommand, SymbolInterpreter);
             var sceneInitializer = new SceneInitializer(sceneItemsFactory);
-            var stlWriter = new VisualSTLStreamWriter();
-            var debugInteropWriter = new DebugInteropStreamWriter();
+            var stlWriter = new VisualStlSerializer();
+            var debugInteropWriter = new DebugInteropSerializer();
             var exporter = new Exporter(Logger, stlWriter, debugInteropWriter);
-            ToolViewModel = new ToolViewModel(SceneViewModel, SymbolInterpreter, sceneInitializer, exporter);
+            ToolViewModel = new ToolViewModel(SceneViewModel, CommandInterpreter, sceneInitializer, exporter);
             VisualizerService = new WatchVisualizerService(visualizerAddItems);
             CurrentSymbolProvider = new CurrentSymbolProvider(dte);
         }
@@ -101,10 +104,10 @@ namespace Watch3D.Package
             windowFrame.Show();
         }
 
-        void ExecuteAddSymbolFromEditor()
+        void ExecuteCommandFromEditor()
         {
             var symbol = CurrentSymbolProvider.GetSelectedSymbol();
-            SymbolInterpreter.TryAddItemBySymbolName(symbol);
+            CommandInterpreter.Execute(symbol);
         }
     }
 }

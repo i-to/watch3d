@@ -52,10 +52,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Debugger\DebugContext.cs" />
+    <Compile Include="Debugger\DebuggeeSymbolInterpreter.cs" />
     <Compile Include="Debugger\ExpressionEvaluator.cs" />
     <Compile Include="Debugger\DebuggerState.cs" />
-    <Compile Include="Debugger\ExpressionInterpreter.cs" />
-    <Compile Include="Debugger\InteropParser.cs" />
+    <Compile Include="Model\SymbolInterpreter.cs" />
+    <Compile Include="Model\AddSceneItemFromLiteralCommand.cs" />
+    <Compile Include="Model\InteropParser.cs" />
+    <Compile Include="Model\SceneItemDeserializer.cs" />
     <Compile Include="InteropConverter.cs" />
     <Compile Include="Model\Exporter.cs" />
     <Compile Include="Model\GridSceneItem.cs" />
@@ -65,7 +68,7 @@
     <Compile Include="Model\PointSceneItem.cs" />
     <Compile Include="Model\PolylineSceneItem.cs" />
     <Compile Include="Model\SceneItem.cs" />
-    <Compile Include="Model\SymbolInterpreter.cs" />
+    <Compile Include="Model\SceneItemSerializer.cs" />
     <Compile Include="Utility\Combinator.cs" />
     <Compile Include="Utility\IEnumerableExtensions.cs" />
     <Compile Include="Utility\IListExtensions.cs" />
@@ -73,6 +76,7 @@
     <Compile Include="Utility\ObservableCollectionWithReplace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\VisualizerAddGeometry.cs" />
+    <Compile Include="Model\CommandInterpreter.cs" />
     <Compile Include="ViewModel\GridSceneItemViewModel.cs" />
     <Compile Include="ViewModel\LightSceneItemViewModel.cs" />
     <Compile Include="ViewModel\MeshSceneItemViewModel.cs" />

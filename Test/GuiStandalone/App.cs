@@ -23,13 +23,18 @@ namespace Watch3D.Test.GuiStandalone
             var sceneItemCollectionAdapter = new SceneItemCollectionAdapter(sceneItems);
             var sceneItemsFactory = new SceneItemFactory();
             var sceneViewModel = new SceneViewModel(sceneItems, sceneItemCollectionAdapter);
-            var symbolInterpreter = new SymbolInterpreterStub();
-            var sceneInitializer = new SceneInitializer(sceneItemsFactory);
             var logger = new LoggerDebugOutput();
-            var stlWriter = new VisualSTLStreamWriter();
-            var debugInteropWriter = new DebugInteropStreamWriter();
+            var debuggerState = new DebuggerStateStub();
+            var sceneItemDeserializer = new SceneItemDeserializer(new InteropParser(), sceneItemsFactory);
+            var addSceneItemFromLiteralCommand =
+                new AddSceneItemFromLiteralCommand(logger, sceneViewModel, sceneItemDeserializer);
+            var symbolInterpreter = new SymbolInterpreterStub(logger);
+            var commandInterpreter = new CommandInterpreter(logger, sceneViewModel, debuggerState, addSceneItemFromLiteralCommand, symbolInterpreter);
+            var sceneInitializer = new SceneInitializer(sceneItemsFactory);
+            var stlWriter = new VisualStlSerializer();
+            var debugInteropWriter = new DebugInteropSerializer();
             var exporter = new Exporter(logger, stlWriter, debugInteropWriter);
-            var toolViewModel = new ToolViewModel(sceneViewModel, symbolInterpreter, sceneInitializer, exporter);
+            var toolViewModel = new ToolViewModel(sceneViewModel, commandInterpreter, sceneInitializer, exporter);
             var control = new ToolView(toolViewModel);
             Window = new Window {Content = control, Title = "Watch 3D standalone GUI test."};
             var addGeometry = new AddGeometryToScene(sceneViewModel, sceneItemsFactory);

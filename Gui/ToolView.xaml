@@ -83,9 +83,9 @@
             </Grid>
         </Grid>
         <DockPanel Grid.Row="1" LastChildFill="True">
-            <Label DockPanel.Dock="Left" Content="Symbol:"/>
-            <Button x:Name="AddButton" DockPanel.Dock="Right" Content="Add" Click="AddBySymbolName"/>
-            <TextBox x:Name="MeshSymbol" Text="" MinWidth="100"/>
+            <Label DockPanel.Dock="Left" Content=">"/>
+            <Button x:Name="ExecuteButton" DockPanel.Dock="Right" Content="Execute" Click="ExecuteCommand"/>
+            <TextBox x:Name="CommandText" Text="" MinWidth="100"/>
         </DockPanel>
     </Grid>
 </UserControl>

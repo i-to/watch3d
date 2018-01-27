@@ -48,7 +48,7 @@ namespace Watch3D.Gui
             ViewModel.ExportSTL(index);
         }
 
-        void AddBySymbolName(object sender, RoutedEventArgs e) =>
-            ViewModel.TryAddItemBySymbolName(MeshSymbol.Text);
+        void ExecuteCommand(object sender, RoutedEventArgs e) =>
+            ViewModel.ExecuteCommand(CommandText.Text);
     }
 }

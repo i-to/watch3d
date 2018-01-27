@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="DebuggerStateStub.cs" />
     <Compile Include="EntryPoint.cs" />
     <Compile Include="LoggerDebugOutput.cs" />
     <Compile Include="SymbolInterpreterStub.cs" />

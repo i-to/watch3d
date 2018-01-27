@@ -7,18 +7,18 @@ namespace Watch3D.Core.ViewModel
     public class ToolViewModel
     {
         public SceneViewModel Scene { get; }
-        public SymbolInterpreter SymbolInterpreter { get; }
+        public CommandInterpreter CommandInterpreter { get; }
         public SceneInitializer SceneInitializer { get; }
         public Exporter Exporter { get; }
 
         public ToolViewModel(
             SceneViewModel scene,
-            SymbolInterpreter symbolInterpreter,
+            CommandInterpreter commandInterpreter,
             SceneInitializer sceneInitializer,
             Exporter exporter)
         {
             Scene = scene;
-            SymbolInterpreter = symbolInterpreter;
+            CommandInterpreter = commandInterpreter;
             SceneInitializer = sceneInitializer;
             Exporter = exporter;
         }
@@ -35,8 +35,8 @@ namespace Watch3D.Core.ViewModel
                 Scene.SceneItems.Modify(index, item => item.ToggleVisibility());
         }
 
-        public void TryAddItemBySymbolName(string symbol) =>
-            SymbolInterpreter.TryAddItemBySymbolName(symbol);
+        public void ExecuteCommand(string command) =>
+            CommandInterpreter.Execute(command);
 
         public void Export(int sceneItemIndex)
         {

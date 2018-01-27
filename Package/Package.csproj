@@ -50,7 +50,6 @@
   <ItemGroup>
     <Compile Include="CommandIds.cs" />
     <Compile Include="CurrentSymbolProvider.cs" />
-    <Compile Include="DebugSymbolInterpreter.cs" />
     <Compile Include="Debugger\DteDebugContext.cs" />
     <Compile Include="Debugger\DteDebuggerState.cs" />
     <Compile Include="CommandsRegistrar.cs" />

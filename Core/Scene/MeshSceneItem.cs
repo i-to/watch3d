@@ -2,7 +2,7 @@ using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using Watch3D.Core.Utility;
 
-namespace Watch3D.Core.Model
+namespace Watch3D.Core.Scene
 {
     public class MeshSceneItem : SceneItem
     {

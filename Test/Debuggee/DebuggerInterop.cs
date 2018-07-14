@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using Watch3D.Test.Debuggee.Geometry;
 
 namespace Watch3D.Test.Debuggee
 {
@@ -9,18 +10,12 @@ namespace Watch3D.Test.Debuggee
 
         public static string EvaluateObject(object obj)
         {
-            var mesh = obj as Mesh;
-            if (mesh != null)
+            if (obj is Mesh mesh)
                 return CreateMesh(mesh);
-
-            var polyline = obj as Polyline;
-            if (polyline != null)
+            if (obj is Polyline polyline)
                 return CreatePolyline(polyline);
-
-            var point = obj as Point;
-            if (point != null)
+            if (obj is Point point)
                 return CreatePoint(point);
-
             return $"Unrecognized object of type: {obj.GetType()}";
         }
 
@@ -67,7 +62,7 @@ namespace Watch3D.Test.Debuggee
         static void AppendPoint(StringBuilder builder, Point point) => 
             builder.Append($"{point.X},{point.Y},{point.Z}");
 
-        static void AppendIndices(StringBuilder builder, IReadOnlyList<Triangle> triangles)
+        static void AppendIndices(StringBuilder builder, IReadOnlyList<MeshTriangle> triangles)
         {
             for (int i = 0; i != triangles.Count; ++i)
             {

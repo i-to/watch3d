@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Media;
 using Watch3D.Core.Model;
+using Watch3D.Core.Scene;
 using Watch3D.Core.Utility;
 
 namespace Watch3D.Core.ViewModel

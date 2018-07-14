@@ -1,6 +1,6 @@
 using HelixToolkit.Wpf;
 
-namespace Watch3D.Core.Model
+namespace Watch3D.Core.Scene
 {
     public class LightSceneItem : SceneItem
     {

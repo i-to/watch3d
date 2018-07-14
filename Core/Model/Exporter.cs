@@ -2,6 +2,7 @@
 using System.IO;
 using System.Text.RegularExpressions;
 using Microsoft.Win32;
+using Watch3D.Core.Scene;
 
 namespace Watch3D.Core.Model
 {

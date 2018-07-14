@@ -1,12 +1,10 @@
-﻿namespace Watch3D.Test.Debuggee
+﻿namespace Watch3D.Test.Debuggee.Geometry
 {
     public class Point
     {
-        public double X, Y, Z;
+        public static Point Zero = new Point(0, 0, 0);
 
-        public Point()
-        {
-        }
+        public readonly double X, Y, Z;
 
         public Point(double x, double y, double z)
         {

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
+using Watch3D.Test.Debuggee.Geometry;
 
 namespace Watch3D.Test.Debuggee
 {
@@ -12,30 +13,26 @@ namespace Watch3D.Test.Debuggee
                 model => Convert((MeshGeometry3D)((GeometryModel3D)model).Geometry));
 
         Mesh Convert(MeshGeometry3D geometry) =>
-            new Mesh
-            {
-                Vertices = Convert(geometry.Positions),
-                Triangles = Convert(geometry.TriangleIndices)
-            };
+            new Mesh(
+                vertices: Convert(geometry.Positions),
+                triangles: Convert(geometry.TriangleIndices));
 
-        List<Triangle> Convert(Int32Collection triangleIndices)
+        List<MeshTriangle> Convert(Int32Collection triangleIndices)
         {
             int triangleCount = triangleIndices.Count / 3;
-            var triangles = new List<Triangle>(triangleCount);
+            var triangles = new List<MeshTriangle>(triangleCount);
             for (int i = 0; i != triangleCount; ++i)
                 AddTriangle(triangles, triangleIndices, i);
             return triangles;
         }
 
-        void AddTriangle(List<Triangle> triangles, Int32Collection triangleIndices, int triangleIndex)
+        void AddTriangle(List<MeshTriangle> triangles, Int32Collection triangleIndices, int triangleIndex)
         {
             int offset = 3 * triangleIndex;
-            var triangle = new Triangle
-            {
-                A = triangleIndices[offset],
-                B = triangleIndices[offset + 1],
-                C = triangleIndices[offset + 2]
-            };
+            var triangle = new MeshTriangle(
+                triangleIndices[offset],
+                triangleIndices[offset + 1],
+                triangleIndices[offset + 2]);
             triangles.Add(triangle);
         }
 

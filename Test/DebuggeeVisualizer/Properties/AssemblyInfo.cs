@@ -2,25 +2,26 @@
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using Watch3D.Test.Debuggee.Geometry;
 using Watch3D.Test.DebuggeeVisualizer;
 using Watch3D.VisualizerServices;
 
 [assembly: DebuggerVisualizer(
     typeof(EntryPoint),
     typeof(ObjectSource),
-    Target = typeof(Watch3D.Test.Debuggee.Mesh),
+    Target = typeof(Mesh),
     Description = "View in Watch3D")]
 
 [assembly: DebuggerVisualizer(
     typeof(EntryPoint),
     typeof(ObjectSource),
-    Target = typeof(Watch3D.Test.Debuggee.Point),
+    Target = typeof(Point),
     Description = "View in Watch3D")]
 
 [assembly: DebuggerVisualizer(
     typeof(EntryPoint),
     typeof(ObjectSource),
-    Target = typeof(List<Watch3D.Test.Debuggee.Point>),
+    Target = typeof(List<Point>),
     Description = "View in Watch3D")]
 
 // General Information about an assembly is controlled through the following 

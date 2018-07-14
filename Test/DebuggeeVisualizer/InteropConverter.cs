@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Watch3D.Test.Debuggee;
+using Watch3D.Test.Debuggee.Geometry;
 using Watch3D.VisualizerServices;
 
 namespace Watch3D.Test.DebuggeeVisualizer
@@ -35,7 +35,7 @@ namespace Watch3D.Test.DebuggeeVisualizer
             vertexData[offset + 2] = point.Z;
         }
 
-        static int[] ConvertTriangles(IReadOnlyList<Triangle> triangles)
+        static int[] ConvertTriangles(IReadOnlyList<MeshTriangle> triangles)
         {
             var count = triangles.Count;
             var result = new int[3 * count];
@@ -44,12 +44,12 @@ namespace Watch3D.Test.DebuggeeVisualizer
             return result;
         }
 
-        static void AddTriangle(int[] triangleData, Triangle triangle, int index)
+        static void AddTriangle(int[] triangleData, MeshTriangle meshTriangle, int index)
         {
             var offset = 3 * index;
-            triangleData[offset] = triangle.A;
-            triangleData[offset + 1] = triangle.B;
-            triangleData[offset + 2] = triangle.C;
+            triangleData[offset] = meshTriangle.A;
+            triangleData[offset + 1] = meshTriangle.B;
+            triangleData[offset + 2] = meshTriangle.C;
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Watch3D.Test.Debuggee.Geometry;
 using Watch3D.Test.Utility;
 
 namespace Watch3D.Test.Debuggee
@@ -28,7 +29,7 @@ namespace Watch3D.Test.Debuggee
         {
             var points = TestGeometry.CreateTestPolyline();
             var convertedPoints = Converter.Convert(points);
-            return new Polyline { Points = convertedPoints };
+            return new Polyline(convertedPoints);
         }
 
         public Point LoadPoint()

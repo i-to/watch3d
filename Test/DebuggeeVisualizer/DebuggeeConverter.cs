@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Watch3D.Test.Debuggee.Geometry;
 using Watch3D.VisualizerServices;
 
 namespace Watch3D.Test.DebuggeeVisualizer
@@ -7,8 +8,7 @@ namespace Watch3D.Test.DebuggeeVisualizer
     {
         public bool TryConvert(out InteropMesh interopMesh, object obj)
         {
-            var mesh = obj as Watch3D.Test.Debuggee.Mesh;
-            if (mesh != null)
+            if (obj is Mesh mesh)
             {
                 interopMesh = InteropConverter.ConvertMesh(mesh);
                 return true;
@@ -19,8 +19,7 @@ namespace Watch3D.Test.DebuggeeVisualizer
 
         public bool TryConvert(out InteropPoints interopPoints, object obj)
         {
-            var points = obj as List<Watch3D.Test.Debuggee.Point>;
-            if (points != null)
+            if (obj is IReadOnlyList<Point> points)
             {
                 interopPoints = InteropConverter.ConvertPoints(points);
                 return true;
@@ -31,8 +30,7 @@ namespace Watch3D.Test.DebuggeeVisualizer
 
         public bool TryConvert(out InteropPoint interopPoint, object obj)
         {
-            var point = obj as Watch3D.Test.Debuggee.Point;
-            if (point != null)
+            if (obj is Point point)
             {
                 interopPoint = InteropConverter.ConvertPoint(point);
                 return true;

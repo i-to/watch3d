@@ -4,7 +4,7 @@ using System.Windows.Media.Media3D;
 using HelixToolkit.Wpf;
 using Watch3D.Core.Geometry;
 
-namespace Watch3D.Core.Model
+namespace Watch3D.Core.Scene
 {
     public class PlaneSceneItem : MeshSceneItem
     {

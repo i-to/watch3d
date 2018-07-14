@@ -32,14 +32,14 @@ namespace Watch3D.Core.Scene
 
         public Color FrontSurfaceColor
         {
-            get { return FrontSurfaceBrush.Color; }
-            set { FrontSurfaceBrush.Color = value; }
+            get => FrontSurfaceBrush.Color;
+            set => FrontSurfaceBrush.Color = value;
         }
 
         public Color BackSurfaceColor
         {
-            get { return BackSurfaceBrush.Color; }
-            set { BackSurfaceBrush.Color = value; }
+            get => BackSurfaceBrush.Color;
+            set => BackSurfaceBrush.Color = value;
         }
     }
 }

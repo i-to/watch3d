@@ -16,26 +16,48 @@ namespace Watch3D.Core.Scene
             SurfaceColor = Colors.Yellow;
         }
 
-        public Point3D Location { get; }
-
         SphereVisual3D SphereVisual => Visual.Cast<SphereVisual3D>();
+
+        public Point3D Location
+        {
+            get => SphereVisual.Center;
+            set => SphereVisual.Center = value;
+        }
+
+        public double X
+        {
+            get => Location.X;
+            set => Location = new Point3D(value, Y, Z);
+        }
+
+        public double Y
+        {
+            get => Location.Y;
+            set => Location = new Point3D(X, value, Z);
+        }
+
+        public double Z
+        {
+            get => Location.Z;
+            set => Location = new Point3D(X, Y, value);
+        }
 
         SolidColorBrush SurfaceBrush
         {
-            get { return SphereVisual.Fill.Cast<SolidColorBrush>(); }
-            set { SphereVisual.Fill = value; }
+            get => SphereVisual.Fill.Cast<SolidColorBrush>();
+            set => SphereVisual.Fill = value;
         }
 
         public Color SurfaceColor
         {
-            get { return SurfaceBrush.Color; }
-            set { SurfaceBrush = new SolidColorBrush(value); }
+            get => SurfaceBrush.Color;
+            set => SurfaceBrush = new SolidColorBrush(value);
         }
 
         public double Radius
         {
-            get { return SphereVisual.Radius; }
-            set { SphereVisual.Radius = value; }
+            get => SphereVisual.Radius;
+            set => SphereVisual.Radius = value;
         }
     }
 }

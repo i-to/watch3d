@@ -1,6 +1,5 @@
 using System;
 using System.Windows.Media;
-using Watch3D.Core.Model;
 using Watch3D.Core.Scene;
 using Watch3D.Core.Utility;
 
@@ -15,9 +14,11 @@ namespace Watch3D.Core.ViewModel
 
         new PolylineSceneItem Model => base.Model.Cast<PolylineSceneItem>();
 
+        public int PointCount => Model.Polyline.Count;
+
         public Color Color
         {
-            get { return Model.SurfaceColor; }
+            get => Model.SurfaceColor;
             set
             {
                 Model.SurfaceColor = value;
@@ -29,7 +30,7 @@ namespace Watch3D.Core.ViewModel
 
         public double Diameter
         {
-            get { return Model.Diameter; }
+            get => Model.Diameter;
             set
             {
                 Model.Diameter = value;
@@ -41,7 +42,7 @@ namespace Watch3D.Core.ViewModel
 
         public bool TubeEnabled
         {
-            get { return Model.TubeVisualEnabled; }
+            get => Model.TubeVisualEnabled;
             set
             {
                 Model.TubeVisualEnabled = value;
@@ -53,7 +54,7 @@ namespace Watch3D.Core.ViewModel
 
         public bool PointsEnabled
         {
-            get { return Model.PointVisualsEnabled; }
+            get => Model.PointVisualsEnabled;
             set
             {
                 Model.PointVisualsEnabled = value;

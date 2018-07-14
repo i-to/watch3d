@@ -57,7 +57,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <ListBox
                     Grid.Row="0" 
@@ -82,7 +82,7 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                <GridSplitter Grid.Row="1" Width="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" ShowsPreview="False" />
+                <GridSplitter Grid.Row="1" Height="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" ShowsPreview="False" />
                 <local:SceneItemPropertiesView
                     Grid.Row="2"
                     Content="{Binding ElementName=SceneItemsList, Path=SelectedItem}"/>

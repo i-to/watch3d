@@ -56,15 +56,6 @@
       <DependentUpon>EditableTextBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="ListBoxExtensions.cs" />
-    <Compile Include="MeshPropertiesView.xaml.cs">
-      <DependentUpon>MeshPropertiesView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PointPropertiesView.xaml.cs">
-      <DependentUpon>PointPropertiesView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PolylinePropertiesView.xaml.cs">
-      <DependentUpon>PolylinePropertiesView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoutedEventArgsExtensions.cs" />
     <Compile Include="SceneItemPropertiesView.xaml.cs">
@@ -82,18 +73,6 @@
     <Page Include="EditableTextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MeshPropertiesView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="PointPropertiesView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="PolylinePropertiesView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SceneItemPropertiesView.xaml">
       <SubType>Designer</SubType>

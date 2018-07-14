@@ -3,25 +3,84 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Watch3D.Gui"
              xmlns:vm="clr-namespace:Watch3D.Core.ViewModel;assembly=Watch3D.Core"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
         <DataTemplate DataType="{x:Type vm:MeshSceneItemViewModel}">
-            <local:MeshPropertiesView />
+            <xctk:PropertyGrid 
+                SelectedObject="{Binding}" 
+                AutoGenerateProperties="False"
+                SelectedObjectName="{Binding Path=Name}"
+                SelectedObjectTypeName="Mesh">
+                <xctk:PropertyGrid.PropertyDefinitions>
+                    <xctk:PropertyDefinition TargetProperties="Name" />
+                    <xctk:PropertyDefinition TargetProperties="FrontSurfaceColor" />
+                    <xctk:PropertyDefinition TargetProperties="BackSurfaceColor" />
+                    <xctk:PropertyDefinition TargetProperties="VertexCount" />
+                    <xctk:PropertyDefinition TargetProperties="TriangleCount" />
+                </xctk:PropertyGrid.PropertyDefinitions>
+            </xctk:PropertyGrid>
         </DataTemplate>
         <DataTemplate DataType="{x:Type vm:PolylineSceneItemViewModel}">
-            <local:PolylinePropertiesView />
+            <xctk:PropertyGrid 
+                SelectedObject="{Binding}" 
+                AutoGenerateProperties="False"
+                SelectedObjectName="{Binding Path=Name}"
+                SelectedObjectTypeName="Polyline">
+                <xctk:PropertyGrid.PropertyDefinitions>
+                    <xctk:PropertyDefinition TargetProperties="Name" />
+                    <xctk:PropertyDefinition TargetProperties="Color" />
+                    <xctk:PropertyDefinition TargetProperties="Diameter" />
+                    <xctk:PropertyDefinition TargetProperties="TubeEnabled" />
+                    <xctk:PropertyDefinition TargetProperties="PointsEnabled" />
+                    <xctk:PropertyDefinition TargetProperties="PointCount" />
+                </xctk:PropertyGrid.PropertyDefinitions>
+            </xctk:PropertyGrid>
         </DataTemplate>
         <DataTemplate DataType="{x:Type vm:PointSceneItemViewModel}">
-            <local:PointPropertiesView />
+            <xctk:PropertyGrid 
+                SelectedObject="{Binding}"
+                SelectedObjectTypeName="Point"
+                SelectedObjectName="{Binding Path=Name}"
+                AutoGenerateProperties="False">
+                <xctk:PropertyGrid.PropertyDefinitions>
+                    <xctk:PropertyDefinition TargetProperties="Name" />
+                    <xctk:PropertyDefinition TargetProperties="Color" />
+                    <xctk:PropertyDefinition TargetProperties="Radius" />
+                    <xctk:PropertyDefinition TargetProperties="X" />
+                    <xctk:PropertyDefinition TargetProperties="Y" />
+                    <xctk:PropertyDefinition TargetProperties="Z" />
+                </xctk:PropertyGrid.PropertyDefinitions>
+            </xctk:PropertyGrid>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PlaneSceneItemViewModel}">
+            <xctk:PropertyGrid
+                SelectedObject="{Binding}"
+                AutoGenerateProperties="False"
+                SelectedObjectName="{Binding Path=Name}"
+                SelectedObjectTypeName="Plane">
+                <xctk:PropertyGrid.PropertyDefinitions>
+                    <xctk:PropertyDefinition TargetProperties="Name" />
+                </xctk:PropertyGrid.PropertyDefinitions>
+            </xctk:PropertyGrid>
         </DataTemplate>
         <DataTemplate DataType="{x:Type vm:GridSceneItemViewModel}">
-            <TextBlock>Grid</TextBlock>
+            <xctk:PropertyGrid
+                SelectedObject="{Binding}"
+                AutoGenerateProperties="False"
+                SelectedObjectName="{Binding Path=Name}"
+                SelectedObjectTypeName="Grid">
+            </xctk:PropertyGrid>
         </DataTemplate>
         <DataTemplate DataType="{x:Type vm:LightSceneItemViewModel}">
-            <TextBlock>Light</TextBlock>
+            <xctk:PropertyGrid
+                SelectedObject="{Binding}"
+                AutoGenerateProperties="False"
+                SelectedObjectName="{Binding Path=Name}"
+                SelectedObjectTypeName="Light">
+            </xctk:PropertyGrid>
         </DataTemplate>
     </UserControl.Resources>
 </UserControl>

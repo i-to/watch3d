@@ -37,7 +37,7 @@ namespace Watch3D.Core.Scene
 
         SolidColorBrush SurfaceBrush
         {
-            get { return TubeVisual.Fill.Cast<SolidColorBrush>(); }
+            get => TubeVisual.Fill.Cast<SolidColorBrush>();
             set
             {
                 TubeVisual.Fill = value;
@@ -47,25 +47,25 @@ namespace Watch3D.Core.Scene
 
         public bool TubeVisualEnabled
         {
-            get { return VisualChildren.FirstOrDefault() is TubeVisual3D; }
-            set { SetupChildren(value, PointVisualsEnabled);}
+            get => VisualChildren.FirstOrDefault() is TubeVisual3D;
+            set => SetupChildren(value, PointVisualsEnabled);
         }
 
         public bool PointVisualsEnabled
         {
-            get { return VisualChildren.LastOrDefault() is SphereVisual3D; }
-            set { SetupChildren(TubeVisualEnabled, value); }
+            get => VisualChildren.LastOrDefault() is SphereVisual3D;
+            set => SetupChildren(TubeVisualEnabled, value);
         }
 
         public Color SurfaceColor
         {
-            get { return SurfaceBrush.Color; }
-            set { SurfaceBrush = new SolidColorBrush(value); }
+            get => SurfaceBrush.Color;
+            set => SurfaceBrush = new SolidColorBrush(value);
         }
 
         public double Diameter
         {
-            get { return TubeVisual.Diameter; }
+            get => TubeVisual.Diameter;
             set
             {
                 TubeVisual.Diameter = value;

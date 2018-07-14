@@ -1,6 +1,6 @@
 using System;
 using System.Windows.Media;
-using Watch3D.Core.Model;
+using System.Windows.Media.Media3D;
 using Watch3D.Core.Scene;
 using Watch3D.Core.Utility;
 
@@ -15,9 +15,13 @@ namespace Watch3D.Core.ViewModel
 
         new MeshSceneItem Model => base.Model.Cast<MeshSceneItem>();
 
+        MeshGeometry3D Mesh => Model.Mesh;
+        public int VertexCount => Mesh.Positions.Count;
+        public int TriangleCount => Mesh.TriangleIndices.Count / 3;
+
         public Color FrontSurfaceColor
         {
-            get { return Model.FrontSurfaceColor; }
+            get => Model.FrontSurfaceColor;
             set
             {
                 Model.FrontSurfaceColor = value;
@@ -29,7 +33,7 @@ namespace Watch3D.Core.ViewModel
 
         public Color BackSurfaceColor
         {
-            get { return Model.BackSurfaceColor; }
+            get => Model.BackSurfaceColor;
             set
             {
                 Model.BackSurfaceColor = value;

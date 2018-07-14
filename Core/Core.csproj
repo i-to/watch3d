@@ -55,6 +55,9 @@
     <Compile Include="Debugger\DebuggeeSymbolInterpreter.cs" />
     <Compile Include="Debugger\ExpressionEvaluator.cs" />
     <Compile Include="Debugger\DebuggerState.cs" />
+    <Compile Include="Geometry\Plane3DExtensions.cs" />
+    <Compile Include="Geometry\Vector3DExtensions.cs" />
+    <Compile Include="Model\PlaneSceneItem.cs" />
     <Compile Include="Model\SymbolInterpreter.cs" />
     <Compile Include="Model\AddSceneItemFromLiteralCommand.cs" />
     <Compile Include="Model\InteropParser.cs" />
@@ -70,6 +73,7 @@
     <Compile Include="Model\SceneItem.cs" />
     <Compile Include="Model\SceneItemSerializer.cs" />
     <Compile Include="Utility\Combinator.cs" />
+    <Compile Include="Utility\DoubleExtensions.cs" />
     <Compile Include="Utility\IEnumerableExtensions.cs" />
     <Compile Include="Utility\IListExtensions.cs" />
     <Compile Include="Utility\ObjectExtensions.cs" />
@@ -77,11 +81,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\VisualizerAddGeometry.cs" />
     <Compile Include="Model\CommandInterpreter.cs" />
+    <Compile Include="Geometry\PlaneFactory.cs" />
+    <Compile Include="ViewModel\AddGeometryToScene.cs" />
     <Compile Include="ViewModel\GridSceneItemViewModel.cs" />
     <Compile Include="ViewModel\LightSceneItemViewModel.cs" />
     <Compile Include="ViewModel\MeshSceneItemViewModel.cs" />
+    <Compile Include="ViewModel\PlaneSceneItemViewModel.cs" />
     <Compile Include="ViewModel\PointSceneItemViewModel.cs" />
     <Compile Include="ViewModel\PolylineSceneItemViewModel.cs" />
+    <Compile Include="ViewModel\SceneInitializer.cs" />
     <Compile Include="ViewModel\SceneItemFactory.cs" />
     <Compile Include="ViewModel\SceneItemViewModel.cs" />
     <Compile Include="Utility\SceneItemCollectionAdapter.cs" />

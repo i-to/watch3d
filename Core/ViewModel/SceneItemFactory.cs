@@ -1,4 +1,5 @@
 using System.Windows.Media.Media3D;
+using HelixToolkit.Wpf;
 using Watch3D.Core.Model;
 
 namespace Watch3D.Core.ViewModel
@@ -33,6 +34,12 @@ namespace Watch3D.Core.ViewModel
         {
             var model = new PointSceneItem(name, point);
             return new PointSceneItemViewModel(model);
+        }
+
+        public SceneItemViewModel CreatePlane(string name, Plane3D plane)
+        {
+            var model = new PlaneSceneItem(name, plane);
+            return new PlaneSceneItemViewModel(model);
         }
     }
 }

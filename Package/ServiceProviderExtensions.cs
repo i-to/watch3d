@@ -2,7 +2,7 @@
 
 namespace Watch3D.Package
 {
-    static class ServiceProviderExtensions
+    public static class ServiceProviderExtensions
     {
         public static TService GetService<TService>(this IServiceProvider provider)
             where TService : class =>

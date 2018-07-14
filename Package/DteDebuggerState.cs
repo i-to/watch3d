@@ -2,7 +2,7 @@
 using EnvDTE100;
 using Watch3D.Core.Debugger;
 
-namespace Watch3D.Package.Debugger
+namespace Watch3D.Package
 {
     public class DteDebuggerState : DebuggerState
     {

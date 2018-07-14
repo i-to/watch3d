@@ -1,8 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{890BA7C3-44C0-4A1B-9549-C7C62F2FDA93}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Package", "Package\Package.csproj", "{9C7E26DE-55DD-4AF1-917E-A42E1B950282}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{30E583E0-47AD-4F24-91B1-DE67D1588B6F}"
@@ -10,8 +12,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gui", "Gui\Gui.csproj", "{98ADF39C-47A2-4A1B-84D9-12387D3AE410}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisualizerServices", "VisualizerServices\VisualizerServices.csproj", "{27F90313-FDCF-4571-BAB4-050AE0FC07B7}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{890BA7C3-44C0-4A1B-9549-C7C62F2FDA93}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Debuggee", "Test\Debuggee\Debuggee.csproj", "{B11F6CF3-0B7E-492D-B8B9-A45EE441417A}"
 EndProject
@@ -68,5 +68,8 @@ Global
 		{69D9638A-F8D0-4835-B4BF-0BE42597C0F6} = {890BA7C3-44C0-4A1B-9549-C7C62F2FDA93}
 		{B3EC75E3-B05C-43F4-B553-6161AB984010} = {890BA7C3-44C0-4A1B-9549-C7C62F2FDA93}
 		{97058654-F494-4A01-8FF7-B79701334E19} = {890BA7C3-44C0-4A1B-9549-C7C62F2FDA93}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {04F13729-7DF0-4896-90AE-48AB9582B590}
 	EndGlobalSection
 EndGlobal

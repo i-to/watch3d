@@ -3,7 +3,7 @@ using System.ComponentModel.Design;
 
 namespace Watch3D.Package
 {
-    class CommandsRegistrar
+    public class CommandsRegistrar
     {
         readonly IMenuCommandService MenuCommandService;
 

@@ -36,19 +36,25 @@ namespace Watch3D.Gui
             EditableTextBox.FindInParent(listBoxItem).StartEditing();
         }
 
-        void ExecuteExport(object sender, ExecutedRoutedEventArgs e)
+        void ExecuteExportItem(object sender, ExecutedRoutedEventArgs e)
         {
             var index = e.GetSource<ListBox>().GetFocusedItemIndex();
-            ViewModel.Export(index);
+            ViewModel.ExportItem(index);
         }
 
-        void ExecuteExportSTL(object sender, ExecutedRoutedEventArgs e)
+        void ExecuteExportItemAsSTL(object sender, ExecutedRoutedEventArgs e)
         {
             var index = e.GetSource<ListBox>().GetFocusedItemIndex();
-            ViewModel.ExportSTL(index);
+            ViewModel.ExportItemAsSTL(index);
         }
 
-        void ExecuteCommand(object sender, RoutedEventArgs e) =>
-            ViewModel.ExecuteCommand(CommandText.Text);
+        void ExecuteTextCommand(object sender, RoutedEventArgs e) =>
+            ViewModel.ExecuteTextCommand(CommandText.Text);
+
+        void ExecuteAddPoint(object sender, ExecutedRoutedEventArgs e) => 
+            ViewModel.ExecuteAddPoint();
+
+        void CanExecuteAddPoint(object sender, CanExecuteRoutedEventArgs e) => 
+            e.CanExecute = true;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Windows.Media.Media3D;
 using Watch3D.Core.Model;
 using Watch3D.Core.Utility;
 
@@ -9,18 +10,21 @@ namespace Watch3D.Core.ViewModel
         public SceneViewModel Scene { get; }
         public CommandInterpreter CommandInterpreter { get; }
         public SceneInitializer SceneInitializer { get; }
+        public AddGeometryToScene AddGeometryToScene { get; }
         public Exporter Exporter { get; }
 
         public ToolViewModel(
             SceneViewModel scene,
             CommandInterpreter commandInterpreter,
             SceneInitializer sceneInitializer,
+            AddGeometryToScene addGeometryToScene,
             Exporter exporter)
         {
             Scene = scene;
             CommandInterpreter = commandInterpreter;
             SceneInitializer = sceneInitializer;
             Exporter = exporter;
+            AddGeometryToScene = addGeometryToScene;
         }
 
         public void InitializeScene() =>
@@ -35,19 +39,22 @@ namespace Watch3D.Core.ViewModel
                 Scene.SceneItems.Modify(index, item => item.ToggleVisibility());
         }
 
-        public void ExecuteCommand(string command) =>
+        public void ExecuteTextCommand(string command) =>
             CommandInterpreter.Execute(command);
 
-        public void Export(int sceneItemIndex)
+        public void ExportItem(int sceneItemIndex)
         {
             var item = Scene.GetItem(sceneItemIndex);
             Exporter.TryExport(item.Model);
         }
 
-        public void ExportSTL(int sceneItemIndex)
+        public void ExportItemAsSTL(int sceneItemIndex)
         {
             var item = Scene.GetItem(sceneItemIndex);
             Exporter.TryExportSTL(item.Model);
         }
+
+        public void ExecuteAddPoint() => 
+            AddGeometryToScene.AddPoint(new Point3D());
     }
 }

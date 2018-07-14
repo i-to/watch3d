@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\SceneCommands.cs" />
     <Compile Include="EditableTextBox.xaml.cs">
       <DependentUpon>EditableTextBox.xaml</DependentUpon>
     </Compile>
@@ -72,7 +73,7 @@
     <Compile Include="ToolView.xaml.cs">
       <DependentUpon>ToolView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UICommands.cs" />
+    <Compile Include="Commands\SceneItemCommands.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

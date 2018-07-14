@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:helix="clr-namespace:HelixToolkit.Wpf;assembly=HelixToolkit.Wpf"
              xmlns:local="clr-namespace:Watch3D.Gui"
+             xmlns:commands="clr-namespace:Watch3D.Gui.Commands"
              Background="{DynamicResource VsBrush.Window}"
              Foreground="{DynamicResource VsBrush.WindowText}"
              mc:Ignorable="d"
@@ -12,13 +13,16 @@
              Name="This">
     <UserControl.Resources>
         <ContextMenu x:Key="SceneItemsListItemPropertiesContextMenu">
-            <MenuItem Command="local:UICommands.StartEditingListItemByKeyGesture"/>
-            <MenuItem Command="local:UICommands.ToggleShowHide"/>
+            <MenuItem Command="commands:SceneItemCommands.StartEditingListItemByKeyGesture"/>
+            <MenuItem Command="commands:SceneItemCommands.ToggleShowHide"/>
             <Separator/>
-            <MenuItem Command="local:UICommands.Export"/>
-            <MenuItem Command="local:UICommands.ExportSTL"/>
+            <MenuItem Command="commands:SceneItemCommands.ExportItem"/>
+            <MenuItem Command="commands:SceneItemCommands.ExportItemAsSTL"/>
             <Separator/>
             <MenuItem Command="ApplicationCommands.Delete"/>
+        </ContextMenu>
+        <ContextMenu x:Key="SceneItemsListBoxContextMenu">
+            <MenuItem Command="commands:SceneCommands.AddPoint"/>
         </ContextMenu>
         <Style x:Key="SceneItemListItemContextMenuStyle" TargetType="{x:Type ListBoxItem}">
             <Setter Property="ContextMenu" Value="{StaticResource SceneItemsListItemPropertiesContextMenu}" />
@@ -60,13 +64,15 @@
                     Name="SceneItemsList"
                     ItemsSource="{Binding Path=Scene.SceneItems}"
                     ItemContainerStyle="{StaticResource SceneItemListItemContextMenuStyle}"
+                    ContextMenu="{StaticResource SceneItemsListBoxContextMenu}"
                     SelectionMode="Extended">
                     <ListBox.CommandBindings>
                         <CommandBinding Command="ApplicationCommands.Delete" Executed="ExecuteDelete" />
-                        <CommandBinding Command="local:UICommands.ToggleShowHide" Executed="ExecuteToggleShowHide"/>
-                        <CommandBinding Command="local:UICommands.StartEditingListItemByKeyGesture" Executed="ExecuteStartEditing"/>
-                        <CommandBinding Command="local:UICommands.Export" Executed="ExecuteExport"/>
-                        <CommandBinding Command="local:UICommands.ExportSTL" Executed="ExecuteExportSTL"/>
+                        <CommandBinding Command="commands:SceneItemCommands.ToggleShowHide" Executed="ExecuteToggleShowHide"/>
+                        <CommandBinding Command="commands:SceneItemCommands.StartEditingListItemByKeyGesture" Executed="ExecuteStartEditing"/>
+                        <CommandBinding Command="commands:SceneItemCommands.ExportItem" Executed="ExecuteExportItem"/>
+                        <CommandBinding Command="commands:SceneItemCommands.ExportItemAsSTL" Executed="ExecuteExportItemAsSTL"/>
+                        <CommandBinding Command="commands:SceneCommands.AddPoint" Executed="ExecuteAddPoint" CanExecute="CanExecuteAddPoint"/>
                     </ListBox.CommandBindings>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
@@ -84,7 +90,7 @@
         </Grid>
         <DockPanel Grid.Row="1" LastChildFill="True">
             <Label DockPanel.Dock="Left" Content=">"/>
-            <Button x:Name="ExecuteButton" DockPanel.Dock="Right" Content="Execute" Click="ExecuteCommand"/>
+            <Button x:Name="ExecuteButton" DockPanel.Dock="Right" Content="Execute" Click="ExecuteTextCommand"/>
             <TextBox x:Name="CommandText" Text="" MinWidth="100"/>
         </DockPanel>
     </Grid>

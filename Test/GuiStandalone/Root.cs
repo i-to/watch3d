@@ -28,7 +28,7 @@ namespace Watch3D.Test.GuiStandalone
             var debugInteropWriter = new DebugInteropSerializer();
             var exporter = new Exporter(logger, stlWriter, debugInteropWriter);
             var toolViewModel = new ToolViewModel(SceneModule.SceneViewModel, 
-                commandInterpreter, SceneModule.SceneInitializer, exporter);
+                commandInterpreter, SceneModule.SceneInitializer, SceneModule.AddGeometryToScene, exporter);
             var control = new ToolView(toolViewModel);
             Window = new Window {Content = control, Title = "Watch 3D standalone GUI test."};
         }

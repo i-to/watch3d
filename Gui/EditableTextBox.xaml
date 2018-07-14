@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Watch3D.Gui"
+             xmlns:commands="clr-namespace:Watch3D.Gui.Commands"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              Name="This">
@@ -12,7 +13,7 @@
                    Text="{Binding ElementName=This, Path=Text}"
                    VerticalAlignment="Center"> 
             <TextBlock.CommandBindings>
-                <CommandBinding Command="local:UICommands.StartEditingListItemByMouseGesture"
+                <CommandBinding Command="commands:SceneItemCommands.StartEditingListItemByMouseGesture"
                                 Executed="ExecuteStartEditing"/>
             </TextBlock.CommandBindings>
         </TextBlock>

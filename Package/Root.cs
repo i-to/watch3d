@@ -52,7 +52,7 @@ namespace Watch3D.Package
             var debugInteropWriter = new DebugInteropSerializer();
             var exporter = new Exporter(Logger, stlWriter, debugInteropWriter);
             ToolViewModel = new ToolViewModel(SceneModule.SceneViewModel,
-                CommandInterpreter, SceneModule.SceneInitializer, exporter);
+                CommandInterpreter, SceneModule.SceneInitializer, SceneModule.AddGeometryToScene, exporter);
             VisualizerService = new WatchVisualizerService(SceneModule.AddGeometryToScene);
             CurrentSymbolProvider = new CurrentSymbolProvider(dte);
         }

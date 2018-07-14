@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 
 namespace Watch3D.Test.GuiStandalone
 {
@@ -7,7 +8,10 @@ namespace Watch3D.Test.GuiStandalone
         [STAThread]
         public static void Main()
         {
-            new App().Run();
+            var application = new Application();
+            var root = new Root();
+            root.InitializeTestScene();
+            application.Run(root.Window);
         }
     }
 }

@@ -6,7 +6,6 @@ using Microsoft.VisualStudio.Shell.Interop;
 using Watch3D.Core;
 using Watch3D.Core.Debugger;
 using Watch3D.Core.Model;
-using Watch3D.Core.Utility;
 using Watch3D.Core.ViewModel;
 using Watch3D.Gui;
 using Watch3D.VisualizerServices;
@@ -19,7 +18,7 @@ namespace Watch3D.Package
         public readonly CommandsRegistrar CommandsRegistrar;
         public readonly SymbolInterpreter SymbolInterpreter;
         public readonly DebuggerState DebuggerState;
-        public readonly SceneViewModel SceneViewModel;
+        public readonly SceneModule SceneModule;
         public readonly VisualizerService VisualizerService;
         public readonly CommandInterpreter CommandInterpreter;
         public readonly CurrentSymbolProvider CurrentSymbolProvider;
@@ -42,24 +41,19 @@ namespace Watch3D.Package
             
             var debugContext = new DteDebugContext(debugger);
             var expressionEvaluator = new ExpressionEvaluator(debugContext);
-            var sceneItemsFactory = new SceneItemFactory();
-            var interopParser = new InteropParser();
-            var sceneItemDeserializer = new SceneItemDeserializer(interopParser, sceneItemsFactory);
-            SymbolInterpreter = new DebuggeeSymbolInterpreter(Logger, expressionEvaluator, sceneItemDeserializer);
+
+            SceneModule = new SceneModule(Logger);
+
+            SymbolInterpreter = new DebuggeeSymbolInterpreter(Logger, expressionEvaluator, SceneModule.SceneItemDeserializer);
             DebuggerState = new DteDebuggerState(debugger);
-            var sceneItems = new ObservableCollectionWithReplace<SceneItemViewModel>();
-            var sceneItemCollectionAdapter = new SceneItemCollectionAdapter(sceneItems);
-            SceneViewModel = new SceneViewModel(sceneItems, sceneItemCollectionAdapter);
-            var visualizerAddItems = new AddGeometryToScene(SceneViewModel, sceneItemsFactory);
-            var addSceneItemFromLiteralCommand =
-                new AddSceneItemFromLiteralCommand(Logger, SceneViewModel, sceneItemDeserializer);
-            CommandInterpreter = new CommandInterpreter(Logger, SceneViewModel, DebuggerState, addSceneItemFromLiteralCommand, SymbolInterpreter);
-            var sceneInitializer = new SceneInitializer(sceneItemsFactory);
+            CommandInterpreter = new CommandInterpreter(Logger, SceneModule.SceneViewModel, 
+                DebuggerState, SceneModule.AddSceneItemFromLiteralCommand, SymbolInterpreter);
             var stlWriter = new VisualStlSerializer();
             var debugInteropWriter = new DebugInteropSerializer();
             var exporter = new Exporter(Logger, stlWriter, debugInteropWriter);
-            ToolViewModel = new ToolViewModel(SceneViewModel, CommandInterpreter, sceneInitializer, exporter);
-            VisualizerService = new WatchVisualizerService(visualizerAddItems);
+            ToolViewModel = new ToolViewModel(SceneModule.SceneViewModel,
+                CommandInterpreter, SceneModule.SceneInitializer, exporter);
+            VisualizerService = new WatchVisualizerService(SceneModule.AddGeometryToScene);
             CurrentSymbolProvider = new CurrentSymbolProvider(dte);
         }
 

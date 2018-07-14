@@ -61,7 +61,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App.cs" />
+    <Compile Include="Repl.cs" />
+    <Compile Include="Root.cs" />
     <Compile Include="DebuggerStateStub.cs" />
     <Compile Include="EntryPoint.cs" />
     <Compile Include="LoggerDebugOutput.cs" />

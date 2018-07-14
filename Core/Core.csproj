@@ -70,6 +70,7 @@
     <Compile Include="Model\PolylineSceneItem.cs" />
     <Compile Include="Model\SceneItem.cs" />
     <Compile Include="Model\SceneItemSerializer.cs" />
+    <Compile Include="SceneModule.cs" />
     <Compile Include="Utility\Combinator.cs" />
     <Compile Include="Utility\DoubleExtensions.cs" />
     <Compile Include="Utility\IEnumerableExtensions.cs" />
